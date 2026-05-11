@@ -1,0 +1,14 @@
+{
+    "protocol": "identity_protocol",
+    "protected_aliases": {
+        "Yetunde": {
+            "alias": "Yewande",
+            "reason": "corruption_shielding"
+        }
+    },
+    "shielded_nodes": [
+        "Yetunde"
+    ],
+    "identity_conflicts": [],
+    "status": "shielding_active"
+}

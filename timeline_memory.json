@@ -1,0 +1,68 @@
+{
+    "Django Sound": {
+        "state": "origin",
+        "connections": [
+            [
+                "Dablixx",
+                "ancestor"
+            ]
+        ]
+    },
+    "Dablixx": {
+        "state": "transmission",
+        "connections": [
+            [
+                "Yetunde",
+                "child"
+            ],
+            [
+                "Olarewaju",
+                "child"
+            ]
+        ]
+    },
+    "Yetunde": {
+        "state": "stable",
+        "connections": [
+            [
+                "Iremide",
+                "corrupted_branch"
+            ]
+        ]
+    },
+    "Olarewaju": {
+        "state": "stable",
+        "connections": [
+            [
+                "Wale",
+                "corrupted_branch"
+            ]
+        ]
+    },
+    "Iremide": {
+        "state": "stable",
+        "connections": []
+    },
+    "Wale": {
+        "state": "stable",
+        "connections": []
+    },
+    "\u03a9": {
+        "state": "unnamed_origin",
+        "connections": [
+            [
+                "Babatunde",
+                "corrupted_projection"
+            ]
+        ]
+    },
+    "Babatunde": {
+        "state": "stable",
+        "connections": [
+            [
+                "\u03a9",
+                "derived_from"
+            ]
+        ]
+    }
+}

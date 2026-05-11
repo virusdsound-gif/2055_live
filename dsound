@@ -1,0 +1,30 @@
+#!/bin/bash
+
+COMMAND=$1
+shift
+
+case $COMMAND in
+  status)
+    echo "=== Essentium Grid // 2055 LIVE ==="
+    echo "Root: 0.7 Hz Django Sound"
+    echo "Active: The Morning Star 🌟"
+    echo "Status: Compounding"
+    ;;
+
+  simulate)
+    python essentium_simulation.py
+    ;;
+
+  mint)
+    echo "Minting NFT with Django Sound Root..."
+    python -c "
+from essentium_web3 import EssentiumWeb3
+EssentiumWeb3().mint_nft('$1', '$2')
+" 2>/dev/null || echo "Usage: dsound mint nft \"Name\" \"Tag\""
+    ;;
+
+  *)
+    echo "Essentium CLI v13.5"
+    echo "Commands: status, simulate, mint nft ..."
+    ;;
+esac

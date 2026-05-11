@@ -1,0 +1,9 @@
+{
+    "protocol": "recovery_protocol",
+    "stable_nodes": [
+        "Yetunde (Yewande)"
+    ],
+    "recovered_nodes": [],
+    "integrity_score": 25.0,
+    "status": "collapse_risk"
+}

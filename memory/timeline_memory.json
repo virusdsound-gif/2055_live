@@ -1,0 +1,25 @@
+{
+    "Yetunde": {
+        "state": "stable",
+        "protected_alias": "Yewande",
+        "alias_reason": "corruption_shielding",
+        "connections": [
+            [
+                "Iremide",
+                "corrupted_branch"
+            ]
+        ]
+    },
+
+    "Wale": {
+        "state": "corrupted"
+    },
+
+    "Ω": {
+        "state": "unnamed_origin"
+    },
+
+    "Babatunde": {
+        "state": "corrupted_entity"
+    }
+}
