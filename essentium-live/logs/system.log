@@ -1,0 +1,15 @@
+{"timestamp": "2026-05-12T12:28:53.978536", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-12T16:24:20.556192", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-12T16:24:20.559957", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-12T16:24:44.173009", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-12T16:24:44.173901", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-12T16:27:03.660722", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-12T16:27:03.663236", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-15T18:17:08.494938", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-15T18:17:08.498975", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-15T18:50:10.777573", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-15T18:50:10.780467", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-15T23:06:35.063397", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-15T23:06:35.097433", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-16T00:02:16.060696", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-16T00:02:16.063488", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}

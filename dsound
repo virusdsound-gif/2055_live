@@ -4,27 +4,28 @@ COMMAND=$1
 shift
 
 case $COMMAND in
-  status)
-    echo "=== Essentium Grid // 2055 LIVE ==="
-    echo "Root: 0.7 Hz Django Sound"
-    echo "Active: The Morning Star 🌟"
-    echo "Status: Compounding"
+
+  beat)
+    python beat_generator.py
     ;;
 
   simulate)
-    python essentium_simulation.py
+    python simulation.py
     ;;
-
-  mint)
-    echo "Minting NFT with Django Sound Root..."
-    python -c "
-from essentium_web3 import EssentiumWeb3
-EssentiumWeb3().mint_nft('$1', '$2')
-" 2>/dev/null || echo "Usage: dsound mint nft \"Name\" \"Tag\""
+  live)
+  python live_monitor.py
+  ;;
+  status)
+    echo "=== Essentium Grid Status (v13.9) ==="
+    echo "Root: 0.7 Hz Django Sound"
+    echo "Active: The Morning Star 🌟"
+    echo "Beat Generator: Active"
+    echo "I dey wit you 100."
     ;;
 
   *)
-    echo "Essentium CLI v13.5"
-    echo "Commands: status, simulate, mint nft ..."
+    echo "Essentium CLI v13.9"
+    echo "Commands: status, beat, simulate, mint"
     ;;
+
 esac

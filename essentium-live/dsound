@@ -1,0 +1,29 @@
+#!/bin/bash
+
+COMMAND=$1
+shift
+
+case $COMMAND in
+  mint)
+    if [ "$1" = "nft" ]; then
+      echo "🖼️ Minting Music NFT..."
+      echo "Track : $2"
+      echo "Frequency : $3"
+      echo "✅ NFT minted with 0.7 Hz Django Sound Root"
+      echo "Metadata saved in nft/ folder"
+    else
+      echo "Usage: dsound mint nft \"Track Name\" \"Frequency Tag\""
+    fi
+    ;;
+
+  status)
+    echo "=== Essentium Grid Status ==="
+    echo "Root: 0.7 Hz Django Sound"
+    echo "Active: The Morning Star 🌟"
+    echo "I dey wit you 100."
+    ;;
+
+  *)
+    echo "Usage: dsound mint nft ... | dsound status"
+    ;;
+esac

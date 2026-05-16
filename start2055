@@ -1,0 +1,4 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+cd ~/2055_live/cli
+python main.py

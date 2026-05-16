@@ -1,0 +1,21 @@
+{
+  "name": "The Morning Star 🌟 — Django Sound Root",
+  "description": "First light after the long night. 0.7 Hz Royal Silence Anchor.",
+  "image": "ipfs://Qm.../morning-star-django.jpg",
+  "frequency": "0.7 Hz",
+  "layer": "Root Anchor",
+  "attributes": [
+    {
+      "trait_type": "Root Strength",
+      "value": "Maximum"
+    },
+    {
+      "trait_type": "Staking Multiplier",
+      "value": "+40%"
+    },
+    {
+      "trait_type": "Patience Yield",
+      "value": "Legendary"
+    }
+  ]
+}
