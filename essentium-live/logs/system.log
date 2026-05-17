@@ -13,3 +13,7 @@
 {"timestamp": "2026-05-15T23:06:35.097433", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
 {"timestamp": "2026-05-16T00:02:16.060696", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
 {"timestamp": "2026-05-16T00:02:16.063488", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-17T07:22:44.071004", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-17T07:22:44.080296", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
+{"timestamp": "2026-05-17T09:27:21.375389", "event": "engine_step", "message": "\u03a8(E) updated to 569.44", "psi_e": 559.37}
+{"timestamp": "2026-05-17T09:27:21.378258", "event": "morning_star", "message": "Activation triggered", "psi_e": 559.37}
