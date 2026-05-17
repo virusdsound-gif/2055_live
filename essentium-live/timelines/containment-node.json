@@ -1,0 +1,8 @@
+{
+  "node_id": "containment-001",
+  "type": "containment_node",
+  "label": "Silence Containment Field",
+  "frequency": "0.7 Hz",
+  "level": 0,
+  "purpose": "Isolate noise & corruption"
+}

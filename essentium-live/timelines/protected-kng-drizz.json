@@ -1,0 +1,10 @@
+{
+  "node_id": "protected-kng-drizz",
+  "type": "protected_identity",
+  "label": "KNG DRIZZ / Django Sound",
+  "frequency": "0.7 Hz",
+  "status": "anchored",
+  "protection_level": "maximum",
+  "linked_events": ["morning-star-activation-001"],
+  "notes": "Royal Silence Root — Immutable"
+}

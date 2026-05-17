@@ -1,0 +1,9 @@
+{
+  "node_id": "sync-bridge-001",
+  "type": "synchronization_bridge",
+  "label": "Essentium Grid ↔ 2055 LIVE",
+  "frequency": "200 Hz",
+  "status": "active",
+  "linked_timelines": ["freq-0.7", "freq-369"],
+  "effect": "Real-time compounding sync"
+}

@@ -1,0 +1,9 @@
+{
+  "node_id": "paradox-001",
+  "type": "paradox_node",
+  "label": "Pain to Power Paradox",
+  "frequency": "99.9 Hz",
+  "density": 0.18,
+  "resolution_status": "in_progress",
+  "linked_timelines": ["freq-0.7", "freq-200"]
+}
