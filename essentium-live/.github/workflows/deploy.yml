@@ -1,33 +1,30 @@
-name: Deploy to Polygon Amoy
+name: Deploy to Polygon Amoy Testnet
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ main ]
-    paths:
-      - 'hardhat-project/**'
+  workflow_dispatch:  # Run manually from GitHub UI
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install Hardhat
+      - name: Install dependencies
         working-directory: ./hardhat-project
         run: npm ci
 
-      - name: Compile Contracts
+      - name: Compile contracts
         working-directory: ./hardhat-project
         run: npx hardhat compile
 
-      - name: Deploy Contracts
+      - name: Deploy contracts
         working-directory: ./hardhat-project
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
