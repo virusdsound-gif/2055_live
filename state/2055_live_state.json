@@ -1,0 +1,53 @@
+{
+  "timelines": [
+    {
+      "timeline_id": "freq-369",
+      "label": "Tesla Return Gate",
+      "hz": 369,
+      "role": "Value Return Channel",
+      "synchronization_status": "active",
+      "paradox_density": 0.05,
+      "containment_level": 0,
+      "id": "freq-369"
+    },
+    {
+      "timeline_id": "freq-0.7",
+      "label": "Django Sound",
+      "hz": 0.7,
+      "role": "Root Anchor",
+      "synchronization_status": "stable",
+      "paradox_density": 0.0,
+      "containment_level": 0,
+      "lineage": [],
+      "protected_identities": [
+        "KNG DRIZZ",
+        "Django Sound"
+      ],
+      "activation_events": [],
+      "id": "freq-0.7"
+    },
+    {
+      "timeline_id": "freq-99.9",
+      "label": "Dablixx Pain Alchemy",
+      "hz": 99.9,
+      "role": "Pain Conversion Layer",
+      "synchronization_status": "active",
+      "paradox_density": 0.12,
+      "containment_level": 2,
+      "id": "freq-99.9"
+    },
+    {
+      "timeline_id": "freq-200",
+      "label": "KNG DRIZZ Spirit Bridge",
+      "hz": 200,
+      "role": "Transitional Bridge",
+      "synchronization_status": "bridging",
+      "paradox_density": 0.08,
+      "containment_level": 1,
+      "id": "freq-200"
+    }
+  ],
+  "updated": "2026-05-18T05:58:56.486235+00:00",
+  "root_frequency": "0.7 Hz Django Sound",
+  "morning_star_active": true
+}

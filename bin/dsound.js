@@ -285,4 +285,100 @@ program.command('pay')
     }
 
   });
+program.command('export')
+  .description('Export full 2055_live state backup')
+  .action(() => {
+
+    try {
+
+      const timestamp = Date.now();
+
+      const exportData = {
+        exportedAt: new Date().toISOString(),
+        live: db.data.live,
+        wallets: db.data.wallets || {},
+        system: {
+          artist: W.artist,
+          root: '0.7 Hz',
+          project: '2055_live'
+        }
+      };
+
+      const path =
+        `/data/data/com.termux/files/home/2055_live/exports/export-${timestamp}.json`;
+
+      fs.writeFileSync(
+        path,
+        JSON.stringify(exportData, null, 2)
+      );
+
+      console.log('✓ Export complete');
+      console.log(`→ ${path}`);
+
+    } catch (e) {
+
+      console.log(`✗ Export failed: ${e.message}`);
+
+    }
+
+  });
+program.command('monitor')
+  .description('Live 2055_live telemetry monitor')
+  .action(() => {
+
+    console.clear();
+
+    console.log('');
+    console.log('=======================================');
+    console.log('      2055 LIVE :: MONITOR');
+    console.log('=======================================');
+    console.log('');
+
+    const live = db.data.live || {};
+
+    console.log(`Artist      : ${W.artist}`);
+    console.log(`User        : ${me}`);
+    console.log(`Root        : 0.7 Hz`);
+    console.log('');
+
+    console.log('------------- STREAM -------------');
+
+    if (live.active) {
+
+      console.log(`Status      : LIVE`);
+      console.log(`Host        : ${live.host}`);
+      console.log(`Ticket      : ${live.ticket} ESS`);
+      console.log(`Viewers     : ${live.viewers.length}`);
+      console.log(`Burned      : ${live.burned || 0} ESS`);
+
+      const uptime =
+        Math.floor(
+          (Date.now() - live.started) / 1000
+        );
+
+      console.log(`Uptime      : ${uptime}s`);
+
+    } else {
+
+      console.log('Status      : OFFLINE');
+
+    }
+
+    console.log('');
+    console.log('------------- WALLET -------------');
+
+    console.log(`Balance     : ${bal(me)} ESS`);
+
+    console.log('');
+    console.log('------------- SYSTEM -------------');
+
+    console.log(`Timelines   : ACTIVE`);
+    console.log(`NFT Layer   : READY`);
+    console.log(`Exports     : ENABLED`);
+    console.log('');
+
+    console.log('=======================================');
+    console.log('');
+
+  });
 program.parse(process.argv);
