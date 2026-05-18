@@ -6,29 +6,29 @@ on:
       - main
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     continue-on-error: true
 
     steps:
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install
+      - name: Install dependencies
         run: npm install || true
+
+      - name: Install Solidity compiler
+        run: npm install -g solc
 
       - name: Prepare runtime
         run: |
           mkdir -p exports
           mkdir -p timelines
           mkdir -p state
+          mkdir -p build
 
       - name: Check files
         run: ls -la
@@ -36,6 +36,32 @@ jobs:
       - name: Validate CLI
         run: |
           node bin/dsound.js status || true
+
+      - name: Compile MorningStar
+        run: |
+          solcjs \
+            --bin \
+            --abi \
+            --include-path node_modules \
+            --base-path . \
+            contracts/MorningStar.sol \
+            -o build
+
+      - name: Generate tree
+        run: |
+          sudo apt update
+          sudo apt install tree -y
+          tree -L 3 > project-tree.txt
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: 2055-live-artifacts
+          path: |
+            exports/
+            state/
+            build/
+            project-tree.txt
 
       - name: Finish
         run: echo "2055_live pipeline complete"
