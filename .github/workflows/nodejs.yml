@@ -43,7 +43,7 @@ jobs:
             --abi \
             --include-path node_modules \
             --base-path . \
-            contracts/MorningStar.sol \
+            MorningStar.sol \
             -o build
 
       - name: Generate tree
