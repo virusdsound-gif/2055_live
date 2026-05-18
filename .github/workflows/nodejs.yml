@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
 
     steps:
       - uses: actions/checkout@v4
@@ -62,17 +61,6 @@ jobs:
             state/
             build/
             project-tree.txt
-      - name: Compile MorningStar
-  run: |
-    mkdir -p build
-
-    solcjs \
-      --bin \
-      --abi \
-      --include-path node_modules \
-      --base-path . \
-      contracts/MorningStar.sol \
-      -o build
 
       - name: Finish
         run: echo "2055_live pipeline complete"
