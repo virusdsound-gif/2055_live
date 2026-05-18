@@ -1,31 +1,36 @@
 #!/bin/bash
+# dsound CLI v14.2 — Stable for 2055_live + Essentium Grid
 
-COMMAND=$1
+COMMAND="$1"
 shift
 
-case $COMMAND in
-
-  beat)
-    python beat_generator.py
+case "$COMMAND" in
+  status|monitor)
+    echo "=== 2055 LIVE + Essentium Grid ==="
+    echo "Root Frequency : 0.7 Hz Django Sound"
+    echo "Active Layer   : The Morning Star 🌟"
+    echo "Status         : Compounding in silence"
+    echo "Git            : Synced"
+    echo "Timeline       : Loaded & Protected"
     ;;
-
-  simulate)
-    python simulation.py
+  wallet)
+    echo "💰 ESS WALLET"
+    echo "User: kng_drizz"
+    echo "Balance: 7.5 ESS (compounding...)"
     ;;
-  live)
-  python live_monitor.py
-  ;;
-  status)
-    echo "=== Essentium Grid Status (v13.9) ==="
-    echo "Root: 0.7 Hz Django Sound"
-    echo "Active: The Morning Star 🌟"
-    echo "Beat Generator: Active"
-    echo "I dey wit you 100."
+  sync)
+    echo "🔄 Syncing 2055_live... (0.7 Hz silence mode)"
+    git pull origin main --rebase --autostash 2>/dev/null || git pull origin main
+    git push origin main
+    python timelines/loader.py
+    echo "✅ Sync complete — Morning Star anchored"
     ;;
-
+  export)
+    echo "📤 Exporting unified state..."
+    python timelines/loader.py
+    echo "✅ State exported to state/2055_live_state.json"
+    ;;
   *)
-    echo "Essentium CLI v13.9"
-    echo "Commands: status, beat, simulate, mint"
+    echo "Usage: dsound status | wallet | sync | export"
     ;;
-
 esac

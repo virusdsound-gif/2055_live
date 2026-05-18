@@ -381,4 +381,44 @@ program.command('monitor')
     console.log('');
 
   });
+program.command('sync')
+  .description('Sync 2055_live to GitHub')
+  .action(() => {
+
+    try {
+
+      console.log('🌌 Syncing 2055_live...');
+
+      execSync('git add .', {
+        cwd: '/data/data/com.termux/files/home/2055_live',
+        stdio: 'inherit'
+      });
+
+      execSync(
+        `git commit -m "Auto sync ${Date.now()}"`,
+        {
+          cwd: '/data/data/com.termux/files/home/2055_live',
+          stdio: 'inherit'
+        }
+      );
+
+      execSync(
+        'git push origin main',
+        {
+          cwd: '/data/data/com.termux/files/home/2055_live',
+          stdio: 'inherit'
+        }
+      );
+
+      console.log('');
+      console.log('✓ GitHub sync complete');
+
+    } catch (e) {
+
+      console.log('');
+      console.log(`✗ Sync failed: ${e.message}`);
+
+    }
+
+  });
 program.parse(process.argv);

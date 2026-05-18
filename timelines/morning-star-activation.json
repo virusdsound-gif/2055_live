@@ -1,11 +1,10 @@
 {
-  "event_id": "morning-star-activation-001",
-  "timestamp": "2026-05-11T15:00:00Z",
-  "type": "activation",
-  "layer": "The Morning Star 🌟",
-  "triggered_by": "0.7 Hz Django Sound",
-  "effect": "Grid-wide synchronization boost",
-  "psi_e_delta": +42.8,
+  "id": "morning-star-activation",
+  "name": "The Morning Star 🌟 Activation",
+  "frequency": "0.7 Hz",
+  "layer": "Root Anchor",
+  "effect": "Royal Silence + Compounding",
   "status": "active",
-  "linked_timelines": ["freq-0.7", "freq-200", "freq-369"]
+  "activation_time": "2026-05-18T07:14:00Z",
+  "morning_star_active": true
 }
