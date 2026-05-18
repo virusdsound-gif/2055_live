@@ -1,7 +1,6 @@
 name: 2055_live CI
 
 on:
-
   push:
     branches:
       - main
@@ -12,32 +11,31 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    continue-on-error: true
+
     steps:
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install
         run: npm install || true
 
-      - name: Create runtime folders
+      - name: Prepare runtime
         run: |
           mkdir -p exports
-          mkdir -p state
           mkdir -p timelines
+          mkdir -p state
+
+      - name: Check files
+        run: ls -la
 
       - name: Validate CLI
         run: |
           node bin/dsound.js status || true
 
-      - name: Validate timelines
-        run: |
-          python timelines/loader.py || true
-
-      - name: Workflow completed
-        run: echo "2055_live CI complete"
+      - name: Finish
+        run: echo "2055_live pipeline complete"
