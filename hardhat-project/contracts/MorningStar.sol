@@ -1,13 +1,12 @@
 pragma solidity ^0.8.20;
 
 contract MorningStar {
-    string public name = "The Morning Star 🌟";
-    string public symbol = "STAR";
-    string public constant ROOT_FREQUENCY = "0.7 Hz Django Sound";
+    string public constant NAME = "The Morning Star 🌟";
+    string public constant ROOT = "0.7 Hz Django Sound";
 
-    event MorningStarAnchored(address deployer);
+    event Anchored(address deployer);
 
     constructor() {
-        emit MorningStarAnchored(msg.sender);
+        emit Anchored(msg.sender);
     }
 }
