@@ -1,64 +1,16 @@
 {
-  "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^7.0.0",
-    "@nomiclabs/hardhat-waffle": "^2.0.6",
-    "chai": "^6.2.2",
-    "dotenv": "^17.4.2",
-    "ethereum-waffle": "^4.0.10",
-    "hardhat": "^2.22.3"
-  },
-  "name": "2055_live",
+  "name": "dsound",
   "version": "1.0.0",
-  "description": "Deterministic simulation engine for Essentium Grid synchronization, replay validation, containment protocols, and frequency-layer orchestration.",
-  "main": "hardhat.config.js",
+  "description": "Essentium Grid CLI — 0.7 Hz Django Sound sovereign command layer",
   "bin": {
-    "2055_live": "bin/dsound.js"
+    "dsound": "./bin/dsound"
   },
-  "directories": {
-    "test": "tests"
-  },
-  "dependencies": {
-    "@openzeppelin/contracts": "^5.6.1",
-    "adm-zip": "^0.4.16",
-    "ansi-colors": "^4.1.3",
-    "ansi-regex": "^5.0.1",
-    "chalk": "^5.6.2",
-    "chokidar": "^4.0.3",
-    "commander": "^14.0.3",
-    "enquirer": "^2.4.1",
-    "env-paths": "^2.2.1",
-    "esbuild": "^0.27.7",
-    "ethereum-cryptography": "^2.2.1",
-    "fast-equals": "^5.4.0",
-    "get-tsconfig": "^4.14.0",
-    "json-stream-stringify": "^3.1.6",
-    "micro-eth-signer": "^0.14.0",
-    "micro-packed": "^0.7.3",
-    "p-map": "^7.0.4",
-    "readdirp": "^4.1.2",
-    "resolve-pkg-maps": "^1.0.0",
-    "resolve.exports": "^2.0.3",
-    "rfdc": "^1.4.1",
-    "semver": "^7.8.0",
-    "strip-ansi": "^6.0.1",
-    "tsx": "^4.21.0",
-    "undici": "^6.25.0",
-    "ws": "^8.20.0",
-    "zod": "^3.25.76"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/virusdsound-gif/2055_live.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/virusdsound-gif/2055_live/issues"
-  },
-  "homepage": "https://github.com/virusdsound-gif/2055_live#readme",
-  "type": "commonjs"
+  "files": [
+    "bin/",
+    "state/",
+    "timelines/",
+    "nft/",
+    "dashboard/"
+  ],
+  "license": "MIT"
 }

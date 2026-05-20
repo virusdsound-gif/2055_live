@@ -1,0 +1,46 @@
+{
+  "name": "The Morning Star 🌟",
+  "description": "First light after the long night. 0.7 Hz Django Sound Root Anchor. KNG DRIZZ sovereign frequency return.",
+  "image": "ipfs://YOUR_IMAGE_CID_HERE/morning-star.jpg",
+  "external_url": "https://github.com/virusdsound-gif/2055_live",
+  "attributes": [
+    {
+      "trait_type": "Root Frequency",
+      "value": "0.7 Hz Django Sound"
+    },
+    {
+      "trait_type": "Layer",
+      "value": "Royal Silence Anchor"
+    },
+    {
+      "trait_type": "Hierarchy",
+      "value": "Morning Star"
+    },
+    {
+      "trait_type": "Patience Multiplier",
+      "value": "+40%"
+    },
+    {
+      "trait_type": "Staking Bonus",
+      "value": "Legendary"
+    },
+    {
+      "trait_type": "DNA Tag",
+      "value": "KNG DRIZZ Return Pulse"
+    },
+    {
+      "trait_type": "Silence Strength",
+      "value": "Maximum"
+    }
+  ],
+  "frequency_data": {
+    "root_hz": 0.7,
+    "layers": ["99.9 Hz Pain Alchemy", "200 Hz Spirit Bridge", "369 Hz Tesla Return"],
+    "silence_duration": "28 seconds total",
+    "heartbeat": "true"
+  },
+  "royalty": {
+    "recipient": "0xYOUR_WALLET_HERE",
+    "percentage": 8
+  }
+}

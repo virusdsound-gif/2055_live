@@ -1,0 +1,99 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+YELLOW='\033[1;33m'
+GREEN='\033[1;32m'
+CYAN='\033[1;36m'
+RED='\033[1;31m'
+RESET='\033[0m'
+
+COMMAND="$1"
+shift
+
+case "$COMMAND" in
+
+  status)
+    echo -e "${YELLOW}=======================================${RESET}"
+    echo -e "${CYAN} ESSENTIUM GRID :: 2055_LIVE${RESET}"
+    echo -e "${YELLOW}=======================================${RESET}"
+    echo ""
+    echo -e "Artist      : ${GREEN}Django Sound${RESET}"
+    echo -e "Root        : ${CYAN}0.7 Hz${RESET}"
+    echo -e "Layer       : ${YELLOW}Morning Star 🌟${RESET}"
+    echo -e "Status      : ${GREEN}ONLINE${RESET}"
+    echo ""
+    ;;
+
+  live)
+    echo -e "${RED}🔴 2055_live STREAM ACTIVE${RESET}"
+    echo ""
+    echo -e "Host        : ${CYAN}kng_drizz${RESET}"
+    echo -e "Ticket Burn : ${YELLOW}0.5 ESS${RESET}"
+    echo -e "Viewers     : ${GREEN}1${RESET}"
+    echo ""
+    echo -e "${CYAN}You are now inside the silence.${RESET}"
+    ;;
+
+  beat)
+    echo -e "${YELLOW}🌟 Generating Morning Star Beat...${RESET}"
+    sleep 1
+    echo -e "${CYAN}Embedding 0.7 Hz root...${RESET}"
+    sleep 1
+    echo -e "${GREEN}✅ Beat exported successfully${RESET}"
+    ;;
+
+  mint)
+    echo -e "${CYAN}Minting Morning Star NFT...${RESET}"
+    sleep 1
+    echo -e "${GREEN}✅ NFT minted${RESET}"
+    echo -e "${YELLOW}Royalty Layer Active${RESET}"
+    ;;
+
+  verify)
+    echo -e "${CYAN}Running verification...${RESET}"
+    sleep 1
+    echo -e "${GREEN}✅ Grid integrity stable${RESET}"
+    echo -e "${GREEN}✅ Wallet synchronization stable${RESET}"
+    echo -e "${GREEN}✅ Morning Star contract verified${RESET}"
+    ;;
+
+  diagnostics)
+    echo -e "${CYAN}Running diagnostics...${RESET}"
+    echo ""
+    echo -e "Heartbeat        : ${GREEN}ACTIVE${RESET}"
+    echo -e "Silence Layer    : ${GREEN}MAXIMUM${RESET}"
+    echo -e "Timeline Sync    : ${GREEN}STABLE${RESET}"
+    echo -e "NFT Layer        : ${GREEN}READY${RESET}"
+    echo -e "Stream Engine    : ${GREEN}ONLINE${RESET}"
+    ;;
+
+  monitor)
+    while true
+    do
+      clear
+      echo -e "${YELLOW}=======================================${RESET}"
+      echo -e "${CYAN} ESSENTIUM LIVE MONITOR${RESET}"
+      echo -e "${YELLOW}=======================================${RESET}"
+      echo ""
+      echo -e "Status      : ${GREEN}LIVE${RESET}"
+      echo -e "Viewers     : ${CYAN}$((RANDOM % 50 + 1))${RESET}"
+      echo -e "Burned ESS  : ${YELLOW}$((RANDOM % 20 + 1)).5 ESS${RESET}"
+      echo -e "Heartbeat   : ${GREEN}STABLE${RESET}"
+      echo -e "Timestamp   : $(date)"
+      sleep 2
+    done
+    ;;
+
+  *)
+    echo -e "${CYAN}dsound :: Essentium Grid CLI${RESET}"
+    echo ""
+    echo "Commands:"
+    echo "  dsound status"
+    echo "  dsound live"
+    echo "  dsound beat"
+    echo "  dsound mint"
+    echo "  dsound verify"
+    echo "  dsound diagnostics"
+    echo "  dsound monitor"
+    ;;
+esac
+

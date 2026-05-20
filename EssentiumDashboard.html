@@ -2,127 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Essentium Grid • 2055 LIVE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>2055_live</title>
   <style>
-    body { 
-      font-family: system-ui; 
-      background: #0a0a0a; 
-      color: #0f0; 
-      padding: 20px; 
-      line-height: 1.6; 
-    }
-    .card { 
-      background: #111; 
-      border: 1px solid #0f0; 
-      border-radius: 12px; 
-      padding: 20px; 
-      margin: 15px 0; 
-    }
-    h1 { color: #0f0; text-align: center; }
-    .status { color: #0f0; font-weight: bold; }
-    .root { color: gold; font-size: 1.1em; }
-
-    /* Heartbeat */
-    .heartbeat {
-      font-size: 3.8rem;
-      text-align: center;
-      animation: heartbeat 1428ms infinite ease-in-out;
-      filter: drop-shadow(0 0 15px gold);
-    }
-    @keyframes heartbeat {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      40%      { transform: scale(1.4); opacity: 1; }
-      60%      { transform: scale(1.15); opacity: 0.95; }
-    }
-
-    /* Frequency Meter */
-    .meter {
-      height: 12px;
-      background: #222;
-      border-radius: 999px;
-      overflow: hidden;
-      position: relative;
-    }
-    .bar {
-      height: 100%;
-      width: 68%;
-      background: linear-gradient(90deg, gold, #0f0);
-      animation: freqPulse 1428ms infinite ease-in-out;
-    }
-    @keyframes freqPulse {
-      0%, 100% { width: 68%; }
-      50% { width: 82%; }
-    }
-
-    .label { text-align: center; color: gold; font-size: 0.85rem; margin: 6px 0; }
+    body { margin:0; padding:20px; background:#0a0a0a; color:#0f0; font-family:system-ui; text-align:center; }
+    .card { background:#111; border:1px solid #0f0; border-radius:16px; padding:20px; margin:16px 0; }
+    .heartbeat { font-size:5rem; animation:beat 1428ms infinite ease-in-out; filter:drop-shadow(0 0 20px gold); }
+    @keyframes beat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.25)} }
+    .wave { height:60px; background:#222; border-radius:8px; margin:12px 0; overflow:hidden; position:relative; }
+    .sine { position:absolute; bottom:0; width:100%; height:100%; background:repeating-linear-gradient(90deg,transparent,gold 4px,transparent 8px); animation:wave 1.428s linear infinite; }
+    @keyframes wave { 0%{background-position:0 0} 100%{background-position:400px 0} }
+    button { width:100%; padding:18px; margin:8px 0; font-size:1.1rem; border-radius:12px; background:#0f0; color:#000; font-weight:bold; }
   </style>
 </head>
 <body>
-  <h1>🌟 Essentium Grid // 2055 LIVE</h1>
+  <h1 style="color:gold">🌟 2055_live</h1>
+  <h2>The Morning Star 🌟</h2>
 
-  <!-- Heartbeat -->
   <div class="card">
-    <h2>Grid Heartbeat</h2>
     <div class="heartbeat">❤️</div>
-    <div class="label">0.7 Hz Django Sound — Royal Silence Pulse</div>
-  </div>
-
-  <!-- Frequency Meter -->
-  <div class="card">
-    <h2>Frequency Strength</h2>
-    <div class="meter"><div class="bar"></div></div>
-    <div class="label">0.7 Hz • LIVE • Root Anchor</div>
+    <p style="color:gold; margin:8px 0 0">0.7 Hz • Royal Silence</p>
   </div>
 
   <div class="card">
-    <h2>Root Frequency</h2>
-    <p class="root">0.7 Hz Django Sound — Royal Silence Anchor</p>
+    <p>Frequency Strength</p>
+    <div class="wave"><div class="sine"></div></div>
   </div>
 
   <div class="card">
-    <h2>Active Layer</h2>
-    <p class="status">The Morning Star 🌟 — FULLY ANCHORED</p>
+    <p>Current Session</p>
+    <p style="font-size:1.3rem">The Morning Star 🌟 • LIVE</p>
   </div>
 
   <div class="card">
-    <h2>Real-time Sync Status</h2>
-    <p id="sync-status" class="sync-live">● Monitoring...</p>
-    <p id="last-sync">Last sync: Just now</p>
+    <p>Silence Field</p>
+    <p style="color:gold">████████████ maximum</p>
   </div>
 
   <div class="card">
-    <h2>Wallet (Compounding)</h2>
-    <p>💰 kng_drizz — <span id="balance">7.5 ESS</span></p>
-    <div style="height:8px; background:#222; border-radius:999px; margin:8px 0;">
-      <div id="wallet-bar" style="height:100%; width:75%; background:linear-gradient(90deg,#0f0,gold);"></div>
-    </div>
-    <small style="color:#0f0;">+0.3 ESS compounding silently</small>
+    <p>Wallet • 7.8 ESS</p>
+    <p style="color:#0f0; font-size:0.95rem">+0.3 ESS compounding silently</p>
   </div>
 
   <div class="card">
-    <h2>Timeline Status</h2>
-    <p id="timelines">Loading...</p>
+    <p>Active Listeners: 14</p>
+    <p>Burned Today: 11.5 ESS</p>
   </div>
+
+  <button onclick="alert('Entering silence...')">JOIN STREAM</button>
+  <button onclick="alert('Leaving silence...')" style="background:#222;color:#0f0">LEAVE SILENCE</button>
 
   <script>
-    function updateDashboard() {
-      fetch('state/2055_live_state.json?t=' + Date.now())
-        .then(r => r.json())
-        .then(data => {
-          document.getElementById('timelines').innerHTML = 
-            `🌌 ${data.timelines ? data.timelines.length : 6} Validated Timelines<br>✅ All Anchored`;
-          document.getElementById('last-sync').innerHTML = 
-            `Last sync: ${new Date(data.updated || Date.now()).toLocaleTimeString()}`;
-          document.getElementById('sync-status').innerHTML = `● LIVE SYNC ACTIVE (0.7 Hz)`;
-        })
-        .catch(() => {
-          document.getElementById('sync-status').innerHTML = `● SYNC STABLE`;
-        });
-    }
-
-    updateDashboard();
-    setInterval(updateDashboard, 8000);
+    // Simple live update simulation
+    setInterval(() => {
+      console.log("0.7 Hz pulse");
+    }, 1428);
   </script>
 </body>
 </html>
