@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>2055_live — Portal</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; display: grid; place-items: center;
+    background: #07090d; color: #e8edf5;
+    font-family: Inter, system-ui, sans-serif;
+  }
+  .wrap { text-align: center; padding: 32px; max-width: 520px; }
+  .pulse {
+    width: 72px; height: 72px; margin: 0 auto 24px;
+    border-radius: 50%; border: 1px solid #2a3d2a;
+    box-shadow: 0 0 0 0 rgba(122,166,122,.35);
+    animation: beat 1.428s ease-in-out infinite;
+    background: radial-gradient(circle at center, #1a2418, #0b0f15);
+  }
+  @keyframes beat {
+    0% { box-shadow: 0 0 0 0 rgba(122,166,122,.35); transform: scale(1); }
+    40% { box-shadow: 0 0 0 16px rgba(122,166,122,0); transform: scale(1.04); }
+    100% { box-shadow: 0 0 0 0 rgba(122,166,122,0); transform: scale(1); }
+  }
+  h1 { letter-spacing: .12em; font-size: 14px; font-weight: 700; }
+  p { color: #8996a9; line-height: 1.6; font-size: 14px; }
+  a {
+    display: inline-block; margin-top: 18px; padding: 10px 16px;
+    border: 1px solid #2f3d28; border-radius: 8px;
+    color: #c5d4b8; text-decoration: none; background: #121910;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="pulse" aria-hidden="true"></div>
+    <h1>2055_LIVE · TRANSNET</h1>
+    <p>Public platforms remain discovery.<br/>This portal is the bridge into intentional sessions.</p>
+    <p>Root frequency: 0.7 Hz Django Sound</p>
+    <a href="./session-select.html">Enter sessions</a>
+  </div>
+</body>
+</html>
