@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morning Star Session \u2014 2055_live</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #050505; color: #cfcfcf;
+      font-family: system-ui, -apple-system, sans-serif;
+      height: 100vh; display: flex; align-items: center; justify-content: center;
+      overflow: hidden; user-select: none;
+    }
+    .container { text-align: center; max-width: 420px; padding: 24px; width: 100%; }
+    .heartbeat {
+      font-size: 4.8rem; margin-bottom: 28px;
+      filter: drop-shadow(0 0 24px gold);
+      transition: transform 0.1s linear;
+    }
+    .phase { font-size: 0.95rem; color: gold; letter-spacing: 1.5px; margin-bottom: 12px; min-height: 1.4em; }
+    .timer { font-size: 0.85rem; opacity: 0.5; margin-bottom: 36px; }
+    .controls { display: flex; gap: 16px; justify-content: center; margin-bottom: 32px; }
+    button {
+      background: transparent; border: 1.5px solid gold; color: gold;
+      padding: 12px 28px; font-size: 0.95rem; border-radius: 40px; cursor: pointer;
+    }
+    button:hover { background: gold; color: #050505; }
+    button:disabled { opacity: 0.35; cursor: default; }
+    .note { font-size: 0.78rem; opacity: 0.45; line-height: 1.5; max-width: 320px; margin: 0 auto; }
+    .progress { width: 100%; height: 2px; background: #1a1a1a; margin: 28px 0 12px; border-radius: 2px; overflow: hidden; }
+    .progress-bar { height: 100%; background: gold; width: 0%; transition: width 0.3s linear; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heartbeat" id="heartbeat">\u2764\ufe0f</div>
+    <div class="phase" id="phase">Ready</div>
+    <div class="timer" id="timer">00:00 / 15:00</div>
+    <div class="controls">
+      <button id="startBtn">Begin</button>
+      <button id="stopBtn" disabled>End</button>
+    </div>
+    <div class="progress"><div class="progress-bar" id="bar"></div></div>
+    <p class="note">0.7 Hz root \u00b7 headphones recommended \u00b7 Morning Star Session</p>
+  </div>
+  <script>
+    const DURATION = 15 * 60;
+    const phases = [
+      { at: 0, label: "Entering the dark" },
+      { at: 120, label: "Root pulse settling" },
+      { at: 300, label: "Silence holding" },
+      { at: 600, label: "Emergence" },
+      { at: 780, label: "Morning Star" },
+      { at: 900, label: "Complete" }
+    ];
+    let started = false, t0 = 0, raf = 0, audioCtx = null, osc = null;
+    const phaseEl = document.getElementById("phase");
+    const timerEl = document.getElementById("timer");
+    const barEl = document.getElementById("bar");
+    const hb = document.getElementById("heartbeat");
+    const startBtn = document.getElementById("startBtn");
+    const stopBtn = document.getElementById("stopBtn");
+
+    function fmt(s) {
+      const m = Math.floor(s / 60), r = Math.floor(s % 60);
+      return String(m).padStart(2,"0") + ":" + String(r).padStart(2,"0");
+    }
+
+    function startAudio() {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const gain = audioCtx.createGain();
+      gain.gain.value = 0.08;
+      osc = audioCtx.createOscillator();
+      osc.frequency.value = 0.7;
+      osc.type = "sine";
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start();
+    }
+
+    function stopAudio() {
+      try { if (osc) osc.stop(); } catch (e) {}
+      if (audioCtx) audioCtx.close();
+      osc = null; audioCtx = null;
+    }
+
+    function tick(now) {
+      if (!started) return;
+      const elapsed = (now - t0) / 1000;
+      const clamped = Math.min(elapsed, DURATION);
+      timerEl.textContent = fmt(clamped) + " / " + fmt(DURATION);
+      barEl.style.width = (clamped / DURATION * 100) + "%";
+      let label = phases[0].label;
+      for (const p of phases) if (clamped >= p.at) label = p.label;
+      phaseEl.textContent = label;
+      const beat = Math.sin(clamped * Math.PI * 2 * 0.7);
+      hb.style.transform = "scale(" + (1 + beat * 0.08) + ")";
+      if (clamped >= DURATION) { endSession(); return; }
+      raf = requestAnimationFrame(tick);
+    }
+
+    function begin() {
+      if (started) return;
+      started = true; t0 = performance.now();
+      startBtn.disabled = true; stopBtn.disabled = false;
+      startAudio();
+      raf = requestAnimationFrame(tick);
+    }
+
+    function endSession() {
+      started = false;
+      cancelAnimationFrame(raf);
+      stopAudio();
+      startBtn.disabled = false; stopBtn.disabled = true;
+      phaseEl.textContent = "Ended";
+      hb.style.transform = "scale(1)";
+    }
+
+    startBtn.addEventListener("click", begin);
+    stopBtn.addEventListener("click", endSession);
+  </script>
+</body>
+</html>
