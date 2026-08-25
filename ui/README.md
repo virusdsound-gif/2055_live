@@ -1,26 +1,28 @@
-# Essentium Dashboard (ui/)
+# UI — 2055_live / Essentium
 
-Improved command surface for 2055_live / Essentium Grid.
-
-## Features synced from collaboration
-
-- Refined telemetry: pulse, integrity, silence, noise, alignment, root 0.7 Hz
-- Alignment states: stable / drifting / critical
-- Quiet auto-pulse (5s) while runtime is live
-- Sessions view with Morning Star as playable entry
-- Portal + session-select links
-- Event stream capped at 40 entries
+Quiet surfaces. No hype.
 
 ## Files
 
-- `ui/EssentiumDashboard.tsx` — main React dashboard
-- `ui/portal.html` — Transnet atmospheric landing
-- `ui/session-select.html` — session chooser
-- `ui/morning-star.html` — playable Morning Star session
-- `music/morning-star-after-the-noise.md` — full track lyrics
-- `docs/SESSIONS.md` — session catalog
+| File | Role |
+|------|------|
+| `portal.html` | Transnet atmospheric entry |
+| `session-select.html` | Session chooser |
+| `morning-star.html` | Playable 0.7 Hz ritual |
+| `EssentiumDashboard.tsx` | Command / telemetry surface |
 
-## Artist / identity
+## Flow
 
-KNG DRIZZ · Django Sound · Ibidun Olamide Theophilus Olarewaju  
-Essentium Grid · 2055_live
+```
+portal → sessions → Morning Star
+```
+
+## Telemetry (dashboard)
+
+- pulse · integrity · silence · noise · alignment
+- auto-pulse every 5s while live
+- Morning Star open action
+
+## Identity
+
+KNG DRIZZ · Django Sound · Ibidun Olamide Theophilus Olarewaju

@@ -24,13 +24,16 @@
     40% { box-shadow: 0 0 0 16px rgba(122,166,122,0); transform: scale(1.04); }
     100% { box-shadow: 0 0 0 0 rgba(122,166,122,0); transform: scale(1); }
   }
-  h1 { letter-spacing: .12em; font-size: 14px; font-weight: 700; }
-  p { color: #8996a9; line-height: 1.6; font-size: 14px; }
+  h1 { letter-spacing: .12em; font-size: 14px; font-weight: 700; margin: 0 0 12px; }
+  p { color: #8996a9; line-height: 1.6; font-size: 14px; margin: 8px 0; }
+  .freq { color: #9ec49e; font-size: 12px; letter-spacing: .08em; margin: 16px 0 8px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 22px; }
   a {
-    display: inline-block; margin-top: 18px; padding: 10px 16px;
+    display: inline-block; padding: 10px 16px;
     border: 1px solid #2f3d28; border-radius: 8px;
     color: #c5d4b8; text-decoration: none; background: #121910;
   }
+  a.secondary { border-color: #273244; background: #10151d; color: #aeb9c8; }
 </style>
 </head>
 <body>
@@ -38,8 +41,11 @@
     <div class="pulse" aria-hidden="true"></div>
     <h1>2055_LIVE · TRANSNET</h1>
     <p>Public platforms remain discovery.<br/>This portal is the bridge into intentional sessions.</p>
-    <p>Root frequency: 0.7 Hz Django Sound</p>
-    <a href="./session-select.html">Enter sessions</a>
+    <p class="freq">ROOT · 0.7 Hz · DJANGO SOUND</p>
+    <div class="actions">
+      <a href="./session-select.html">Enter sessions</a>
+      <a class="secondary" href="./morning-star.html">Morning Star</a>
+    </div>
   </div>
 </body>
 </html>

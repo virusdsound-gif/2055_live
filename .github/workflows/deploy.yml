@@ -9,24 +9,31 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Setup Node.js
-        uses: actions/setup-node@1e60f620b9541d16bece96c5465dc8ee9832be0b
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 20
 
       - name: Install dependencies
         run: |
-          cd hardhat-project || true
-          npm install
+          if [ -d hardhat-project ]; then
+            cd hardhat-project
+            npm install
+          else
+            echo "hardhat-project missing"
+            exit 1
+          fi
 
       - name: Compile contracts
         run: |
-          cd hardhat-project || true
+          cd hardhat-project
           npx hardhat compile
 
       - name: Deploy to Amoy Testnet
         run: |
-          cd hardhat-project || true
+          cd hardhat-project
           npx hardhat run scripts/deploy.js --network amoy
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}

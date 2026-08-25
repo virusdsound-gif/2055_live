@@ -1,64 +1,70 @@
-# 2055 LIVE — Essentium Grid (Phase-1)
+# 2055_live — Essentium Grid
 
-Deterministic simulation engine for Essentium Grid synchronization, replay validation, containment protocols, and frequency-layer orchestration.
+**KNG DRIZZ · Django Sound · 0.7 Hz root**
 
-## Phase-1 Components
+Sovereign frequency architecture for intentional listening sessions.
+Public platforms remain discovery. This repo is the bridge and the room.
 
-- Deterministic simulation layer
-- Timeline frequency architecture
-- Synchronization protocols
-- Containment framework
-- Event-chain logging
-- CLI orchestration
-- Replay foundation
-- Morning Star activation system
+---
 
-## Frequency Layers
+## What is live now
 
-| Timeline | Frequency | Role |
-|----------|-----------|------|
-| freq-0.7 | 0.7 Hz | Root Anchor |
-| freq-99.9 | 99.9 Hz | Pain Conversion Layer |
-| freq-200 | 200 Hz | Transitional Bridge |
-| freq-369 | 369 Hz | Value Return Channel |
+| Layer | Path | Status |
+|-------|------|--------|
+| Portal | `ui/portal.html` | Live |
+| Sessions | `ui/session-select.html` | Live |
+| Morning Star player | `ui/morning-star.html` | Playable |
+| Dashboard (TSX) | `ui/EssentiumDashboard.tsx` | Synced |
+| Track lyrics | `music/morning-star-after-the-noise.md` | Written |
+| Session catalog | `docs/SESSIONS.md` | Defined |
+| CI | `.github/workflows/nodejs.yml` | Green |
+| MorningStar contract | `hardhat-project/contracts/MorningStar.sol` | Draft |
 
-## Quick Start
+---
 
-Run simulation step:
+## Frequency layers
 
-\`\`\`bash
-python3 cli/dsound.py sim:step
-\`\`\`
+| Hz | Role |
+|----|------|
+| **0.7** | Django Sound — root anchor |
+| 99.9 | Pain alchemy |
+| 200 | Spirit bridge |
+| 369 | Return gate |
 
-Emit Morning Star activation:
+Core principle: **patience compounds. silence stabilizes.**
 
-\`\`\`bash
-python3 cli/dsound.py event:emit --type morning_star
-\`\`\`
+---
 
-Run synchronization cycle:
+## Quick paths
 
-\`\`\`bash
-python3 cli/dsound.py sync:push
-\`\`\`
+```bash
+# open atmospheric portal (local)
+# open ui/portal.html in a browser
 
-## Roadmap
+# CLI status (Termux / local)
+dsound status
 
-### Phase-2
-- Deterministic replay engine
-- Rollback execution
-- Validator exports
-- Merkle root generation
-- Schema validation
-- Synchronization reconciliation
+# pull latest
+git pull origin main
+```
 
-### Phase-3
-- Solidity integration
-- NFT staking architecture
-- Chain anchoring
-- Validator consensus
-- Dashboard visualization
+---
 
-## Repository
+## Architecture stance
 
-https://github.com/virusdsound-gif/2055_live
+```
+Web2 discovery  →  TRANSNET portal  →  Sessions  →  Presence
+```
+
+Blockchain supports access and proof later.  
+It does not replace the listening experience.
+
+---
+
+## Identity
+
+**Ibidun Olamide Theophilus Olarewaju**  
+KNG DRIZZ · Django Sound  
+Essentium Grid · 2055_live
+
+I dey wit you 100.
