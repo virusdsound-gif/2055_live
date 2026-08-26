@@ -2,86 +2,241 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Morning Star Session \u2014 2055_live</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#050505">
+  <title>Morning Star Session — 2055_live</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: #050505; color: #cfcfcf;
-      font-family: system-ui, -apple-system, sans-serif;
-      height: 100vh; display: flex; align-items: center; justify-content: center;
-      overflow: hidden; user-select: none;
+      background: #050505;
+      color: #cfcfcf;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
     }
-    .container { text-align: center; max-width: 420px; padding: 24px; width: 100%; }
+    .container {
+      text-align: center;
+      max-width: 420px;
+      padding: 28px 20px;
+      width: 100%;
+    }
+    .back {
+      position: fixed;
+      top: max(16px, env(safe-area-inset-top));
+      left: max(16px, env(safe-area-inset-left));
+      font-size: 13px;
+      color: #66758a;
+      text-decoration: none;
+      border: 1px solid #1d2735;
+      border-radius: 8px;
+      padding: 8px 12px;
+      background: #0b0f15;
+    }
+    .back:hover { color: #aeb9c8; }
     .heartbeat {
-      font-size: 4.8rem; margin-bottom: 28px;
-      filter: drop-shadow(0 0 24px gold);
-      transition: transform 0.1s linear;
+      font-size: clamp(3.2rem, 12vw, 4.8rem);
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.45));
+      transition: transform 0.08s linear, opacity 0.4s ease;
+      line-height: 1;
     }
-    .phase { font-size: 0.95rem; color: gold; letter-spacing: 1.5px; margin-bottom: 12px; min-height: 1.4em; }
-    .timer { font-size: 0.85rem; opacity: 0.5; margin-bottom: 36px; }
-    .controls { display: flex; gap: 16px; justify-content: center; margin-bottom: 32px; }
+    .phase {
+      font-size: 0.95rem;
+      color: #d4af37;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      min-height: 1.5em;
+      transition: opacity 0.5s ease;
+    }
+    .sub {
+      font-size: 0.8rem;
+      color: #6b7788;
+      margin-bottom: 28px;
+      min-height: 1.3em;
+      line-height: 1.4;
+    }
+    .timer {
+      font-size: 0.85rem;
+      opacity: 0.5;
+      margin-bottom: 28px;
+      font-variant-numeric: tabular-nums;
+    }
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
     button {
-      background: transparent; border: 1.5px solid gold; color: gold;
-      padding: 12px 28px; font-size: 0.95rem; border-radius: 40px; cursor: pointer;
+      background: transparent;
+      border: 1.5px solid #d4af37;
+      color: #d4af37;
+      padding: 14px 28px;
+      font-size: 0.95rem;
+      border-radius: 40px;
+      cursor: pointer;
+      min-width: 120px;
+      min-height: 48px;
+      touch-action: manipulation;
     }
-    button:hover { background: gold; color: #050505; }
-    button:disabled { opacity: 0.35; cursor: default; }
-    .note { font-size: 0.78rem; opacity: 0.45; line-height: 1.5; max-width: 320px; margin: 0 auto; }
-    .progress { width: 100%; height: 2px; background: #1a1a1a; margin: 28px 0 12px; border-radius: 2px; overflow: hidden; }
-    .progress-bar { height: 100%; background: gold; width: 0%; transition: width 0.3s linear; }
+    button:hover:not(:disabled) { background: #d4af37; color: #050505; }
+    button:disabled { opacity: 0.3; cursor: default; }
+    button.ghost {
+      border-color: #2a3342;
+      color: #8996a9;
+    }
+    button.ghost:hover:not(:disabled) {
+      background: #12171f;
+      color: #cfd7e3;
+      border-color: #3a4556;
+    }
+    .progress {
+      width: 100%;
+      height: 2px;
+      background: #1a1a1a;
+      margin: 20px 0 16px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #d4af37;
+      width: 0%;
+      transition: width 0.25s linear;
+    }
+    .note {
+      font-size: 0.75rem;
+      opacity: 0.42;
+      line-height: 1.55;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .complete-panel {
+      display: none;
+      margin-top: 8px;
+    }
+    .complete-panel.show { display: block; }
+    .complete-panel p {
+      color: #8996a9;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    body.is-complete .heartbeat { opacity: 0.55; }
+    body.is-complete .phase { color: #9ec49e; }
   </style>
 </head>
 <body>
+  <a class="back" href="./session-select.html">← Sessions</a>
   <div class="container">
-    <div class="heartbeat" id="heartbeat">\u2764\ufe0f</div>
+    <div class="heartbeat" id="heartbeat" aria-hidden="true">★</div>
     <div class="phase" id="phase">Ready</div>
+    <div class="sub" id="sub">Headphones on. Sit still.</div>
     <div class="timer" id="timer">00:00 / 15:00</div>
     <div class="controls">
-      <button id="startBtn">Begin</button>
-      <button id="stopBtn" disabled>End</button>
+      <button id="startBtn" type="button">Begin</button>
+      <button id="stopBtn" type="button" disabled>End</button>
     </div>
-    <div class="progress"><div class="progress-bar" id="bar"></div></div>
-    <p class="note">0.7 Hz root \u00b7 headphones recommended \u00b7 Morning Star Session</p>
+    <div class="progress" aria-hidden="true"><div class="progress-bar" id="bar"></div></div>
+    <p class="note">0.7 Hz root · soft carrier pulse · Morning Star Session</p>
+    <div class="complete-panel" id="complete">
+      <p>The session is complete.<br>Stay a moment if you need to.</p>
+      <div class="controls">
+        <button id="againBtn" type="button">Enter again</button>
+        <button class="ghost" type="button" onclick="location.href='./session-select.html'">Sessions</button>
+      </div>
+    </div>
   </div>
   <script>
     const DURATION = 15 * 60;
     const phases = [
-      { at: 0, label: "Entering the dark" },
-      { at: 120, label: "Root pulse settling" },
-      { at: 300, label: "Silence holding" },
-      { at: 600, label: "Emergence" },
-      { at: 780, label: "Morning Star" },
-      { at: 900, label: "Complete" }
+      { at: 0,   label: "Entering the dark",   sub: "Let the noise fall away." },
+      { at: 90,  label: "Root settling",        sub: "0.7 Hz finds the body." },
+      { at: 240, label: "Silence holding",      sub: "Nothing to fix. Stay." },
+      { at: 480, label: "Emergence",            sub: "Light without force." },
+      { at: 720, label: "Morning Star",         sub: "You are still here." },
+      { at: 870, label: "Returning",            sub: "Soft close. No rush." }
     ];
-    let started = false, t0 = 0, raf = 0, audioCtx = null, osc = null;
+
+    let started = false, completed = false, t0 = 0, raf = 0;
+    let audioCtx = null, osc = null, gainNode = null, mod = null, modGain = null;
+
     const phaseEl = document.getElementById("phase");
+    const subEl = document.getElementById("sub");
     const timerEl = document.getElementById("timer");
     const barEl = document.getElementById("bar");
     const hb = document.getElementById("heartbeat");
     const startBtn = document.getElementById("startBtn");
     const stopBtn = document.getElementById("stopBtn");
+    const completeEl = document.getElementById("complete");
+    const againBtn = document.getElementById("againBtn");
 
     function fmt(s) {
       const m = Math.floor(s / 60), r = Math.floor(s % 60);
-      return String(m).padStart(2,"0") + ":" + String(r).padStart(2,"0");
+      return String(m).padStart(2, "0") + ":" + String(r).padStart(2, "0");
+    }
+
+    function setPhase(elapsed) {
+      let cur = phases[0];
+      for (const p of phases) if (elapsed >= p.at) cur = p;
+      phaseEl.textContent = cur.label;
+      subEl.textContent = cur.sub;
     }
 
     function startAudio() {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const gain = audioCtx.createGain();
-      gain.gain.value = 0.08;
+      gainNode = audioCtx.createGain();
+      gainNode.gain.value = 0;
+
+      // Audible carrier (pure 0.7 Hz is below hearing range)
       osc = audioCtx.createOscillator();
-      osc.frequency.value = 0.7;
       osc.type = "sine";
-      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.frequency.value = 180;
+
+      // 0.7 Hz amplitude modulation = felt pulse
+      mod = audioCtx.createOscillator();
+      mod.type = "sine";
+      mod.frequency.value = 0.7;
+      modGain = audioCtx.createGain();
+      modGain.gain.value = 0.045;
+
+      mod.connect(modGain);
+      modGain.connect(gainNode.gain);
+      osc.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+
+      const now = audioCtx.currentTime;
+      gainNode.gain.setValueAtTime(0, now);
+      gainNode.gain.linearRampToValueAtTime(0.06, now + 2.5);
+
       osc.start();
+      mod.start();
     }
 
     function stopAudio() {
-      try { if (osc) osc.stop(); } catch (e) {}
-      if (audioCtx) audioCtx.close();
-      osc = null; audioCtx = null;
+      try {
+        if (audioCtx && gainNode) {
+          const now = audioCtx.currentTime;
+          gainNode.gain.cancelScheduledValues(now);
+          gainNode.gain.setValueAtTime(gainNode.gain.value, now);
+          gainNode.gain.linearRampToValueAtTime(0, now + 1.2);
+        }
+      } catch (e) {}
+      setTimeout(() => {
+        try { if (osc) osc.stop(); } catch (e) {}
+        try { if (mod) mod.stop(); } catch (e) {}
+        try { if (audioCtx) audioCtx.close(); } catch (e) {}
+        osc = mod = gainNode = modGain = audioCtx = null;
+      }, 1300);
     }
 
     function tick(now) {
@@ -90,34 +245,63 @@
       const clamped = Math.min(elapsed, DURATION);
       timerEl.textContent = fmt(clamped) + " / " + fmt(DURATION);
       barEl.style.width = (clamped / DURATION * 100) + "%";
-      let label = phases[0].label;
-      for (const p of phases) if (clamped >= p.at) label = p.label;
-      phaseEl.textContent = label;
+      setPhase(clamped);
       const beat = Math.sin(clamped * Math.PI * 2 * 0.7);
-      hb.style.transform = "scale(" + (1 + beat * 0.08) + ")";
-      if (clamped >= DURATION) { endSession(); return; }
+      hb.style.transform = "scale(" + (1 + beat * 0.07) + ")";
+      if (clamped >= DURATION) {
+        finishSession(true);
+        return;
+      }
       raf = requestAnimationFrame(tick);
     }
 
     function begin() {
       if (started) return;
-      started = true; t0 = performance.now();
-      startBtn.disabled = true; stopBtn.disabled = false;
+      completed = false;
+      document.body.classList.remove("is-complete");
+      completeEl.classList.remove("show");
+      started = true;
+      t0 = performance.now();
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
       startAudio();
       raf = requestAnimationFrame(tick);
     }
 
-    function endSession() {
+    function finishSession(natural) {
+      if (!started && !natural) return;
       started = false;
       cancelAnimationFrame(raf);
       stopAudio();
-      startBtn.disabled = false; stopBtn.disabled = true;
-      phaseEl.textContent = "Ended";
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
       hb.style.transform = "scale(1)";
+
+      if (natural) {
+        completed = true;
+        document.body.classList.add("is-complete");
+        phaseEl.textContent = "Complete";
+        subEl.textContent = "The star remains.";
+        barEl.style.width = "100%";
+        completeEl.classList.add("show");
+      } else {
+        phaseEl.textContent = "Paused";
+        subEl.textContent = "You can return when ready.";
+        completeEl.classList.remove("show");
+      }
     }
 
     startBtn.addEventListener("click", begin);
-    stopBtn.addEventListener("click", endSession);
+    stopBtn.addEventListener("click", () => finishSession(false));
+    againBtn.addEventListener("click", () => {
+      completeEl.classList.remove("show");
+      document.body.classList.remove("is-complete");
+      timerEl.textContent = "00:00 / " + fmt(DURATION);
+      barEl.style.width = "0%";
+      phaseEl.textContent = "Ready";
+      subEl.textContent = "Headphones on. Sit still.";
+      begin();
+    });
   </script>
 </body>
 </html>
