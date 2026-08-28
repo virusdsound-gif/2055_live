@@ -1,27 +1,45 @@
-# System Status — 2055_live
+# SYSTEM STATUS — 2055_live / Essentium
 
-Last optimized: 2026-08-25
+**Updated:** 2026-08-28  
+**Mode:** Optimized · simplicity protected
 
-## Health
+---
 
-| Component | State |
-|-----------|--------|
-| GitHub CI (nodejs.yml) | ✅ Green (SHA-pinned) |
-| UI layer | ✅ Synced on main |
-| Morning Star session | ✅ Playable |
-| Deploy (Amoy) | ⏳ Pending reliable run |
-| Token-gated stream | ⏳ Designed, not production |
-| Full dashboard app host | ⏳ TSX source only |
+## Live spine (only what matters)
 
-## Focus order
+| Layer | Status | Note |
+|-------|--------|------|
+| **Root** | 0.7 Hz Django Sound | Anchor |
+| **Flagship** | Morning Star session | Playable |
+| **Door** | `ui/portal.html` | Public-ready |
+| **Path** | Portal → Sessions → Morning Star | Locked |
+| **Music text** | `music/morning-star-after-the-noise.md` | Lyrics shelved |
+| **Repo** | `virusdsound-gif/2055_live` | Source of truth |
+| **Workbench** | Chat with Grok | Primary |
+| **Git** | Shelf when ready | Not daily |
+| **Termux** | Optional backup | Not required |
+| **Chain** | Parked | Until chosen |
 
-1. Keep CI green
-2. Deepen session experience (not more features)
-3. Deploy only when secrets + Hardhat path are clean
-4. Protect simplicity
+---
 
-## Do not reintroduce
+## Operating rules (optimized)
 
-- Extra narrative layers without product value
-- Fake balances or pegged token displays as “live value”
-- Unpinned GitHub Actions tags
+1. **Protect simplicity** — no new systems without a session/music reason  
+2. **Work from chat** — push only finished pieces  
+3. **Presence over scaffolding** — use Morning Star; produce the track  
+4. **Web2 discovers · door deepens** — share portal when ready  
+5. **Patience compounds** — no forced deploy or cash-out pressure  
+
+---
+
+## Raise next (pick one)
+
+1. **Use the session** — headphones, full path  
+2. **Produce the track** — lyrics → audio  
+3. **Open the door** — bio / Boomplay link when you choose  
+
+Everything else stays background.
+
+---
+
+**One line:** Built · shelved · ready to deepen through sound and presence.
