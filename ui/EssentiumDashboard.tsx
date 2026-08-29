@@ -1,9 +1,8 @@
 import React, { useMemo, useState } from "react";
 
 /*
- * ESSENTIUM / DSOUND COMMAND DASHBOARD
- * Full command surface (overview → telemetry).
- * Live spine is ONLINE; archived design layers are ARCHIVED (not fake ONLINE).
+ * ESSENTIUM / DSOUND COMMAND DASHBOARD — optimized
+ * Live-first nav. Archive in one drawer. Honest status.
  */
 
 type Status = "ONLINE" | "ACTIVE" | "STABLE" | "ARCHIVED" | "PARKED";
@@ -27,144 +26,107 @@ const modules: Module[] = [
   {
     name: "Essentium Core",
     category: "CORE",
-    description: "Primary identity, state, and orchestration root.",
+    description: "Identity, state, orchestration root.",
     status: "ONLINE",
-    files: ["docs/SYSTEM_STATUS.md", "ui/EssentiumDashboard.tsx"],
+    files: ["docs/SYSTEM_STATUS.md"],
   },
   {
     name: "Django Sound",
     category: "CREATIVE",
-    description: "0.7 Hz root · KNG DRIZZ · music and presence.",
+    description: "0.7 Hz root · KNG DRIZZ · presence.",
     status: "ACTIVE",
     files: ["ui/morning-star.html", "music/morning-star-after-the-noise.md"],
   },
   {
     name: "2055 Live",
     category: "LIVE",
-    description: "Portal → sessions → Morning Star continuous path.",
+    description: "Portal → sessions → Morning Star.",
     status: "ONLINE",
-    files: ["ui/portal.html", "ui/session-select.html", "docs/SESSIONS.md"],
-  },
-  {
-    name: "Dsoundics",
-    category: "ENGINE",
-    description: "Signal and frequency design layer (archived scripts).",
-    status: "ARCHIVED",
-    files: ["dsoundics_music.py", "beat_generator.py"],
-  },
-  {
-    name: "Lexi",
-    category: "COGNITION",
-    description: "Lexical / frequency design notes — not a live runtime service.",
-    status: "ARCHIVED",
-    files: ["docs/TERMUX_AND_GIT_TRACK.md"],
-  },
-  {
-    name: "Vivian",
-    category: "COGNITION",
-    description: "Narrative / restoration design layer — archived.",
-    status: "ARCHIVED",
-    files: ["docs/TERMUX_AND_GIT_TRACK.md"],
-  },
-  {
-    name: "Trinity",
-    category: "PROTOCOL",
-    description: "Multi-node coordination design — archived.",
-    status: "ARCHIVED",
-    files: ["docs/TERMUX_AND_GIT_TRACK.md"],
-  },
-  {
-    name: "Mirror Layer",
-    category: "SECURITY",
-    description: "Identity and sovereignty design notes.",
-    status: "ARCHIVED",
-    files: ["docs/GIT_SHELF_AND_PUBLIC.md"],
-  },
-  {
-    name: "Fortress",
-    category: "SECURITY",
-    description: "Boundary and protection design — archived.",
-    status: "ARCHIVED",
-    files: ["docs/GIT_SHELF_AND_PUBLIC.md"],
-  },
-  {
-    name: "Frequency Engine",
-    category: "SIGNAL",
-    description: "0.7 / 99.9 / 200 / 369 Hz map — session-backed.",
-    status: "ACTIVE",
-    files: ["ui/morning-star.html", "docs/SESSIONS.md"],
+    files: ["ui/portal.html", "ui/session-select.html"],
   },
   {
     name: "Music Vault",
     category: "CREATIVE",
-    description: "Lyrics, production lane, track later.",
+    description: "Lyrics and track lane.",
     status: "ACTIVE",
     files: ["music/morning-star-after-the-noise.md"],
   },
   {
-    name: "Recovery",
-    category: "RECOVERY",
-    description: "Return / restore design — archived.",
-    status: "ARCHIVED",
-    files: ["docs/TERMUX_AND_GIT_TRACK.md"],
+    name: "Frequency Engine",
+    category: "SIGNAL",
+    description: "0.7 Hz session root.",
+    status: "ACTIVE",
+    files: ["ui/morning-star.html"],
+  },
+  {
+    name: "Transnet Door",
+    category: "PUBLIC",
+    description: "Public entry when you choose.",
+    status: "STABLE",
+    files: ["docs/GIT_SHELF_AND_PUBLIC.md", "ui/portal.html"],
+  },
+  {
+    name: "Git Shelf",
+    category: "OPS",
+    description: "Chat workbench · push when finished.",
+    status: "STABLE",
+    files: ["docs/GIT_SHELF_AND_PUBLIC.md"],
   },
   {
     name: "Chain / Hardhat",
     category: "PROTOCOL",
-    description: "Deploy path parked until deliberately chosen.",
+    description: "Parked until chosen.",
     status: "PARKED",
     files: ["hardhat-project/", "MorningStar.sol"],
   },
+  {
+    name: "Lexi",
+    category: "ARCHIVE",
+    description: "Design layer — not a live service.",
+    status: "ARCHIVED",
+    files: [],
+  },
+  {
+    name: "Vivian",
+    category: "ARCHIVE",
+    description: "Design layer — not a live service.",
+    status: "ARCHIVED",
+    files: [],
+  },
+  {
+    name: "Trinity",
+    category: "ARCHIVE",
+    description: "Design layer — archived.",
+    status: "ARCHIVED",
+    files: [],
+  },
+  {
+    name: "Mirror / Fortress",
+    category: "ARCHIVE",
+    description: "Protection design — archived.",
+    status: "ARCHIVED",
+    files: [],
+  },
 ];
-
-const contracts = [
-  "MorningStar.sol",
-  "EssentiumTrade.sol (draft)",
-  "seal / validate family (archived drafts)",
-];
-
-const fileGroups: Record<string, string[]> = {
-  "Live UI": [
-    "ui/portal.html",
-    "ui/session-select.html",
-    "ui/morning-star.html",
-    "ui/EssentiumDashboard.tsx",
-  ],
-  Docs: [
-    "docs/SYSTEM_STATUS.md",
-    "docs/SESSIONS.md",
-    "docs/GIT_SHELF_AND_PUBLIC.md",
-    "docs/TERMUX_AND_GIT_TRACK.md",
-    "docs/OPTIMIZE_LOG.md",
-  ],
-  Creative: ["music/morning-star-after-the-noise.md"],
-  Protocol: ["MorningStar.sol", "hardhat-project/"],
-};
 
 const initialEvents: Event[] = [
   {
     time: "SYSTEM",
     source: "BOOT",
-    message: "Full command dashboard loaded.",
+    message: "Optimized dashboard — live-first.",
     level: "INFO",
   },
   {
     time: "CORE",
     source: "OPTIMIZE",
-    message: "Archived layers labeled ARCHIVED — not ONLINE.",
+    message: "Archive collapsed to one view.",
     level: "SYNC",
   },
   {
     time: "LIVE",
     source: "2055",
-    message: "Portal path registered.",
+    message: "Portal path ONLINE.",
     level: "INFO",
-  },
-  {
-    time: "CREATIVE",
-    source: "DJANGO",
-    message: "Morning Star + music vault active.",
-    level: "SYNC",
   },
 ];
 
@@ -178,75 +140,58 @@ function StatusBadge({ status }: { status: Status }) {
   );
 }
 
-function Section({
-  title,
-  subtitle,
-  children,
-}: {
-  title: string;
-  subtitle?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="section">
-      <div className="section-head">
-        <div>
-          <h2>{title}</h2>
-          {subtitle && <p>{subtitle}</p>}
-        </div>
-      </div>
-      {children}
-    </section>
-  );
-}
-
 export default function EssentiumDashboard() {
   const [view, setView] = useState("overview");
   const [query, setQuery] = useState("");
   const [events, setEvents] = useState<Event[]>(initialEvents);
   const [pulse, setPulse] = useState(73);
   const [integrity, setIntegrity] = useState(98);
+  const [silence, setSilence] = useState(88);
   const [running, setRunning] = useState(true);
 
-  const filteredModules = useMemo(() => {
+  const liveModules = useMemo(
+    () =>
+      modules.filter(
+        (m) => m.status !== "ARCHIVED" && m.status !== "PARKED"
+      ),
+    []
+  );
+
+  const archivedModules = useMemo(
+    () =>
+      modules.filter(
+        (m) => m.status === "ARCHIVED" || m.status === "PARKED"
+      ),
+    []
+  );
+
+  const filteredLive = useMemo(() => {
     const q = query.toLowerCase().trim();
-    if (!q) return modules;
-    return modules.filter((module) =>
-      [module.name, module.category, module.description, ...module.files]
+    if (!q) return liveModules;
+    return liveModules.filter((m) =>
+      [m.name, m.category, m.description, ...m.files]
         .join(" ")
         .toLowerCase()
         .includes(q)
     );
-  }, [query]);
-
-  const filteredFiles = useMemo(() => {
-    const q = query.toLowerCase().trim();
-    if (!q) return fileGroups;
-    const result: Record<string, string[]> = {};
-    Object.entries(fileGroups).forEach(([group, files]) => {
-      const matches = files.filter((file) => file.toLowerCase().includes(q));
-      if (matches.length) result[group] = matches;
-    });
-    return result;
-  }, [query]);
+  }, [query, liveModules]);
 
   function addEvent(
     source: string,
     message: string,
     level: Event["level"] = "INFO"
   ) {
-    setEvents((current) => [
-      { time: now(), source, message, level },
-      ...current,
-    ]);
+    setEvents((c) => [{ time: now(), source, message, level }, ...c]);
   }
 
   function runPulse() {
-    const nextPulse = Math.floor(60 + Math.random() * 36);
-    const nextIntegrity = Math.floor(94 + Math.random() * 7);
-    setPulse(nextPulse);
-    setIntegrity(nextIntegrity);
-    addEvent("PULSE", `System pulse recalculated: ${nextPulse}%`, "SYNC");
+    const p = Math.floor(60 + Math.random() * 36);
+    const i = Math.floor(94 + Math.random() * 7);
+    const s = Math.floor(80 + Math.random() * 20);
+    setPulse(p);
+    setIntegrity(i);
+    setSilence(s);
+    addEvent("PULSE", `Pulse ${p}% · silence ${s}%`, "SYNC");
   }
 
   function toggleRuntime() {
@@ -254,36 +199,30 @@ export default function EssentiumDashboard() {
     setRunning(next);
     addEvent(
       "RUNTIME",
-      next ? "Live runtime resumed." : "Live runtime paused.",
+      next ? "Resumed." : "Paused.",
       next ? "INFO" : "WARN"
     );
   }
 
   function runAudit() {
     setIntegrity(100);
-    addEvent("AUDIT", "Spine integrity audit completed.", "SYNC");
+    setSilence(95);
+    addEvent("AUDIT", "Spine integrity OK.", "SYNC");
   }
-
-  const stats = {
-    modules: modules.length,
-    contracts: contracts.length,
-    files: Object.values(fileGroups).flat().length,
-    events: events.length,
-  };
 
   return (
     <>
       <style>{`
         * { box-sizing: border-box; }
         :root {
-          font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+          font-family: Inter, ui-sans-serif, system-ui, sans-serif;
           background: #07090d;
           color: #e8edf5;
         }
         body {
           margin: 0;
           background:
-            radial-gradient(circle at top right, rgba(65, 95, 150, 0.12), transparent 32%),
+            radial-gradient(circle at top right, rgba(65,95,150,0.1), transparent 30%),
             #07090d;
         }
         button, input { font: inherit; }
@@ -291,236 +230,209 @@ export default function EssentiumDashboard() {
         .app { min-height: 100vh; }
         .topbar {
           position: sticky; top: 0; z-index: 20;
-          display: flex; align-items: center; justify-content: space-between; gap: 20px;
-          padding: 16px 22px;
+          display: flex; align-items: center; justify-content: space-between; gap: 12px;
+          padding: 14px 18px;
           border-bottom: 1px solid #1c2330;
-          background: rgba(7, 9, 13, 0.94);
-          backdrop-filter: blur(14px);
+          background: rgba(7,9,13,0.94);
+          backdrop-filter: blur(12px);
         }
-        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand { display: flex; align-items: center; gap: 10px; }
         .brand-mark {
-          width: 38px; height: 38px; display: grid; place-items: center;
-          border: 1px solid #56667d; border-radius: 12px;
-          font-weight: 800; letter-spacing: -1px;
+          width: 34px; height: 34px; display: grid; place-items: center;
+          border: 1px solid #56667d; border-radius: 10px; font-weight: 800;
         }
-        .brand-title { font-weight: 800; letter-spacing: 0.08em; }
-        .brand-sub { margin-top: 2px; font-size: 11px; color: #7f8da1; letter-spacing: 0.12em; }
+        .brand-title { font-weight: 800; letter-spacing: 0.08em; font-size: 13px; }
+        .brand-sub { font-size: 10px; color: #7f8da1; letter-spacing: 0.1em; margin-top: 2px; }
         .runtime {
-          display: flex; align-items: center; gap: 9px;
-          font-size: 12px; color: #9ba7b8;
+          display: flex; align-items: center; gap: 8px;
+          font-size: 11px; color: #9ba7b8;
         }
         .dot {
-          width: 8px; height: 8px; border-radius: 50%;
+          width: 7px; height: 7px; border-radius: 50%;
           background: ${running ? "#7ddea0" : "#d1b98c"};
         }
         .shell {
           display: grid;
-          grid-template-columns: 220px 1fr;
-          min-height: calc(100vh - 71px);
+          grid-template-columns: 180px 1fr;
+          min-height: calc(100vh - 62px);
         }
         .sidebar {
           border-right: 1px solid #1c2330;
-          padding: 18px 12px;
+          padding: 14px 8px;
         }
         .nav-label {
-          padding: 10px 12px;
-          font-size: 10px; color: #69768a;
-          letter-spacing: 0.16em; text-transform: uppercase;
+          padding: 8px 10px;
+          font-size: 9px; color: #69768a;
+          letter-spacing: 0.14em; text-transform: uppercase;
         }
-        .nav { display: grid; gap: 5px; }
+        .nav { display: grid; gap: 3px; }
         .nav button {
           border: 1px solid transparent;
           background: transparent;
           color: #9da9ba;
           text-align: left;
-          padding: 10px 12px;
-          border-radius: 9px;
+          padding: 9px 10px;
+          border-radius: 8px;
+          font-size: 13px;
         }
-        .nav button:hover,
-        .nav button.active {
+        .nav button:hover, .nav button.active {
           border-color: #273244;
           background: #10151d;
           color: #f0f4fa;
         }
-        .main { width: 100%; max-width: 1500px; padding: 24px; }
+        .main { padding: 18px; max-width: 1100px; }
         .hero {
-          display: flex; justify-content: space-between; gap: 20px;
-          align-items: flex-end; margin-bottom: 22px; flex-wrap: wrap;
+          display: flex; justify-content: space-between; gap: 14px;
+          align-items: flex-end; flex-wrap: wrap; margin-bottom: 18px;
         }
         .eyebrow {
-          color: #7d8ba0; font-size: 11px;
-          letter-spacing: 0.15em; text-transform: uppercase;
+          font-size: 10px; color: #7d8ba0;
+          letter-spacing: 0.14em; text-transform: uppercase;
         }
         h1 {
-          margin: 7px 0;
-          font-size: clamp(28px, 4vw, 48px);
-          letter-spacing: -0.04em;
+          margin: 4px 0;
+          font-size: clamp(22px, 3.5vw, 34px);
+          letter-spacing: -0.03em;
         }
         .hero p {
-          max-width: 680px; margin: 0;
-          color: #8996a9; line-height: 1.6;
+          margin: 0; max-width: 420px;
+          color: #8996a9; font-size: 13px; line-height: 1.5;
         }
         .search {
-          min-width: 260px; max-width: 360px; width: 100%;
-          padding: 12px 14px;
-          border: 1px solid #283344; border-radius: 10px;
-          outline: none; background: #0d1118; color: #e8edf5;
+          padding: 10px 12px;
+          border: 1px solid #283344; border-radius: 9px;
+          background: #0d1118; color: #e8edf5;
+          min-width: 180px; max-width: 280px; width: 100%;
+          outline: none;
         }
         .search:focus { border-color: #52647e; }
         .stats {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 12px; margin-bottom: 28px;
+          gap: 8px; margin-bottom: 20px;
         }
         .stat {
-          padding: 18px;
-          border: 1px solid #1c2634; border-radius: 13px;
+          padding: 14px;
+          border: 1px solid #1c2634; border-radius: 11px;
           background: #0b0f15;
         }
         .stat-label {
-          color: #738096; font-size: 11px;
-          text-transform: uppercase; letter-spacing: 0.12em;
+          font-size: 9px; color: #738096;
+          letter-spacing: 0.1em; text-transform: uppercase;
         }
-        .stat-value { margin-top: 8px; font-size: 28px; font-weight: 800; }
-        .section { margin-top: 30px; }
-        .section-head {
-          display: flex; justify-content: space-between; align-items: center;
-          margin-bottom: 13px;
+        .stat-value { margin-top: 4px; font-size: 22px; font-weight: 800; }
+        .section { margin-top: 22px; }
+        h2 { margin: 0 0 10px; font-size: 15px; }
+        .sub {
+          margin: -6px 0 12px; color: #718096; font-size: 12px;
         }
-        h2 { margin: 0; font-size: 18px; }
-        .section-head p { margin: 4px 0 0; color: #718096; font-size: 12px; }
         .grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
+          gap: 8px;
         }
         .card {
-          border: 1px solid #1d2735; border-radius: 13px;
-          background: #0b0f15; padding: 16px;
+          border: 1px solid #1d2735; border-radius: 11px;
+          background: #0b0f15; padding: 12px;
         }
         .card:hover { border-color: #344257; }
         .card-top {
-          display: flex; justify-content: space-between; gap: 12px;
+          display: flex; justify-content: space-between; gap: 8px;
         }
-        .card-title { font-weight: 750; }
+        .card-title { font-weight: 700; font-size: 13px; }
         .category {
-          margin-top: 4px; color: #66758a;
-          font-size: 10px; letter-spacing: 0.13em;
+          margin-top: 2px; font-size: 9px; color: #66758a;
+          letter-spacing: 0.1em;
         }
         .description {
-          min-height: 58px; margin: 14px 0;
-          color: #8996a9; font-size: 13px; line-height: 1.5;
+          margin: 10px 0; color: #8996a9;
+          font-size: 12px; line-height: 1.45; min-height: 36px;
         }
-        .files { display: flex; flex-wrap: wrap; gap: 5px; }
+        .files { display: flex; flex-wrap: wrap; gap: 4px; }
         .file {
-          padding: 5px 7px;
-          border: 1px solid #202c3b; border-radius: 6px;
-          color: #7e8da1; font-size: 10px;
-          font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+          padding: 3px 6px;
+          border: 1px solid #202c3b; border-radius: 5px;
+          font-size: 9px; color: #7e8da1;
+          font-family: ui-monospace, monospace;
         }
         .status {
-          height: fit-content; padding: 4px 7px;
+          height: fit-content; padding: 3px 6px;
           border: 1px solid #303c4e; border-radius: 999px;
-          font-size: 9px; font-weight: 800; letter-spacing: 0.08em;
+          font-size: 8px; font-weight: 800; letter-spacing: 0.06em;
         }
-        .status-online, .status-stable, .status-active { color: #b8c9df; }
+        .status-online, .status-active, .status-stable { color: #b8c9df; }
         .status-archived, .status-parked { color: #66758a; }
         .panel {
           display: grid;
-          grid-template-columns: 1.2fr 0.8fr;
-          gap: 12px;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
         }
         .metric {
-          padding: 18px;
-          border: 1px solid #1d2735; border-radius: 13px;
+          padding: 14px;
+          border: 1px solid #1d2735; border-radius: 11px;
           background: #0b0f15;
         }
         .metric-head {
           display: flex; justify-content: space-between;
-          color: #8d9aae; font-size: 12px;
+          font-size: 11px; color: #8d9aae;
         }
         .metric-number {
-          margin: 13px 0 10px; font-size: 36px; font-weight: 850;
+          margin: 8px 0; font-size: 28px; font-weight: 850;
         }
         .bar {
-          height: 7px; overflow: hidden;
-          border-radius: 999px; background: #171e29;
+          height: 5px; border-radius: 999px;
+          background: #171e29; overflow: hidden;
         }
         .bar > span {
           display: block; height: 100%;
           background: #8191a8; border-radius: inherit;
-          transition: width 300ms ease;
+          transition: width 280ms ease;
         }
-        .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+        .actions {
+          display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+        }
         .button {
-          padding: 9px 12px;
-          border: 1px solid #293648; border-radius: 8px;
+          padding: 8px 11px;
+          border: 1px solid #293648; border-radius: 7px;
           background: #10151d; color: #d7deea;
+          font-size: 12px;
         }
         .button:hover {
           background: #171e28; border-color: #405069;
         }
-        .events { display: grid; gap: 7px; }
+        .events { display: grid; gap: 5px; }
         .event {
           display: grid;
-          grid-template-columns: 70px 100px 1fr;
-          gap: 10px; padding: 10px 12px;
-          border: 1px solid #18212d; border-radius: 8px;
+          grid-template-columns: 64px 80px 1fr;
+          gap: 8px; padding: 8px 10px;
+          border: 1px solid #18212d; border-radius: 7px;
           background: #090d13; font-size: 11px;
         }
         .event-time { color: #647287; font-family: ui-monospace, monospace; }
         .event-source { color: #a4b0c0; font-weight: 700; }
         .event-message { color: #7e8b9e; }
         .event-warn { border-color: #3a3021; }
-        .file-table { width: 100%; border-collapse: collapse; }
-        .file-table td {
-          padding: 10px;
-          border-bottom: 1px solid #18212d;
-          font-size: 12px;
-        }
-        .file-table td:first-child { color: #6e7c90; width: 180px; }
-        .contract-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 7px;
-        }
-        .contract {
-          padding: 10px;
-          border: 1px solid #1d2735; border-radius: 8px;
-          background: #0a0e14; color: #8996a9;
-          font-family: ui-monospace, monospace; font-size: 11px;
-        }
         .footer {
-          margin-top: 45px; padding: 24px 0 12px;
+          margin-top: 32px; padding-top: 16px;
           border-top: 1px solid #1c2330;
-          color: #5e6c80; font-size: 11px; line-height: 1.7;
+          font-size: 11px; color: #5e6c80; line-height: 1.6;
         }
-        .signature { margin-top: 10px; color: #8c99ab; }
-        @media (max-width: 1000px) {
+        .signature { margin-top: 8px; color: #8c99ab; }
+        @media (max-width: 860px) {
           .shell { grid-template-columns: 1fr; }
           .sidebar {
             border-right: 0;
             border-bottom: 1px solid #1c2330;
           }
           .nav { display: flex; flex-wrap: wrap; }
-          .stats, .grid, .contract-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
+          .stats, .grid { grid-template-columns: repeat(2, 1fr); }
           .panel { grid-template-columns: 1fr; }
         }
-        @media (max-width: 650px) {
-          .topbar, .hero {
-            align-items: flex-start;
-            flex-direction: column;
-          }
-          .main { padding: 16px; }
-          .stats, .grid, .contract-grid {
-            grid-template-columns: 1fr;
-          }
-          .event {
-            grid-template-columns: 1fr;
-            gap: 3px;
-          }
+        @media (max-width: 520px) {
+          .topbar, .hero { flex-direction: column; align-items: flex-start; }
+          .main { padding: 12px; }
+          .stats, .grid { grid-template-columns: 1fr; }
+          .event { grid-template-columns: 1fr; gap: 2px; }
         }
       `}</style>
 
@@ -530,31 +442,25 @@ export default function EssentiumDashboard() {
             <div className="brand-mark">E</div>
             <div>
               <div className="brand-title">ESSENTIUM</div>
-              <div className="brand-sub">DSOUND COMMAND ARCHITECTURE</div>
+              <div className="brand-sub">LIVE SPINE · DSOUND</div>
             </div>
           </div>
           <div className="runtime">
             <span className="dot" />
-            {running ? "LIVE RUNTIME" : "RUNTIME PAUSED"}
+            {running ? "LIVE" : "PAUSED"}
           </div>
         </header>
 
         <div className="shell">
           <aside className="sidebar">
-            <div className="nav-label">System</div>
+            <div className="nav-label">Command</div>
             <nav className="nav">
               {(
                 [
                   ["overview", "Overview"],
-                  ["essence", "Essence"],
-                  ["live", "2055 Live"],
-                  ["engines", "Engines"],
-                  ["lexi", "Lexi / Vivian"],
-                  ["music", "Django Sound"],
-                  ["security", "Security"],
-                  ["protocol", "Protocols"],
-                  ["files", "Architecture"],
-                  ["events", "Telemetry"],
+                  ["modules", "Modules"],
+                  ["telemetry", "Telemetry"],
+                  ["archive", "Archive"],
                 ] as const
               ).map(([id, label]) => (
                 <button
@@ -572,178 +478,60 @@ export default function EssentiumDashboard() {
           <main className="main">
             <div className="hero">
               <div>
-                <div className="eyebrow">Unified system command surface</div>
-                <h1>{view.toUpperCase()}</h1>
+                <div className="eyebrow">Optimized command surface</div>
+                <h1>{view === "archive" ? "ARCHIVE" : "LIVE SPINE"}</h1>
                 <p>
-                  One interface for Essentium / Dsound: live spine, creative
-                  systems, archived design layers, protocols, and telemetry.
-                  Status labels stay honest.
+                  Portal, sessions, Morning Star, music. Archive stays one
+                  click away — not in the main path.
                 </p>
               </div>
-              <input
-                className="search"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search modules and files..."
-              />
+              {view !== "archive" && (
+                <input
+                  className="search"
+                  placeholder="Search live modules…"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              )}
             </div>
 
             <div className="stats">
               <div className="stat">
-                <div className="stat-label">Registered modules</div>
-                <div className="stat-value">{stats.modules}</div>
+                <div className="stat-label">Live</div>
+                <div className="stat-value">{liveModules.length}</div>
               </div>
               <div className="stat">
-                <div className="stat-label">Protocol entries</div>
-                <div className="stat-value">{stats.contracts}</div>
+                <div className="stat-label">Archive</div>
+                <div className="stat-value">{archivedModules.length}</div>
               </div>
               <div className="stat">
-                <div className="stat-label">Tracked files</div>
-                <div className="stat-value">{stats.files}+</div>
+                <div className="stat-label">Integrity</div>
+                <div className="stat-value">{integrity}%</div>
               </div>
               <div className="stat">
-                <div className="stat-label">Telemetry events</div>
-                <div className="stat-value">{stats.events}</div>
+                <div className="stat-label">Silence</div>
+                <div className="stat-value">{silence}%</div>
               </div>
             </div>
 
-            {view === "overview" && (
-              <>
-                <Section
-                  title="System Pulse"
-                  subtitle="Local synthetic telemetry (not on-chain)"
-                >
-                  <div className="panel">
-                    <div className="metric">
-                      <div className="metric-head">
-                        <span>ESSENTIUM PULSE</span>
-                        <span>{pulse}%</span>
-                      </div>
-                      <div className="metric-number">{pulse}%</div>
-                      <div className="bar">
-                        <span style={{ width: `${pulse}%` }} />
-                      </div>
-                    </div>
-                    <div className="metric">
-                      <div className="metric-head">
-                        <span>INTEGRITY</span>
-                        <span>{integrity}%</span>
-                      </div>
-                      <div className="metric-number">{integrity}%</div>
-                      <div className="bar">
-                        <span style={{ width: `${integrity}%` }} />
-                      </div>
-                    </div>
-                  </div>
-                </Section>
-
-                <Section title="Command Layer" subtitle="Safe local dashboard actions">
-                  <div className="actions">
-                    <button type="button" className="button" onClick={runPulse}>
-                      Recalculate Pulse
-                    </button>
-                    <button type="button" className="button" onClick={runAudit}>
-                      Run Integrity Audit
-                    </button>
-                    <button
-                      type="button"
-                      className="button"
-                      onClick={toggleRuntime}
-                    >
-                      {running ? "Pause Runtime" : "Resume Runtime"}
-                    </button>
-                  </div>
-                </Section>
-
-                <Section
-                  title="Architecture"
-                  subtitle="Major subsystems registered in this dashboard"
-                >
-                  <div className="grid">
-                    {filteredModules.slice(0, 6).map((module) => (
-                      <div className="card" key={module.name}>
-                        <div className="card-top">
-                          <div>
-                            <div className="card-title">{module.name}</div>
-                            <div className="category">{module.category}</div>
-                          </div>
-                          <StatusBadge status={module.status} />
-                        </div>
-                        <div className="description">{module.description}</div>
-                        <div className="files">
-                          {module.files.map((file) => (
-                            <span className="file" key={file}>
-                              {file}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </Section>
-              </>
-            )}
-
-            {view === "essence" && (
-              <Section
-                title="Essence Layer"
-                subtitle="Essence as a measurable local dimension"
-              >
+            {(view === "overview" || view === "telemetry") && (
+              <section className="section">
+                <h2>Telemetry</h2>
+                <p className="sub">Local metrics — not on-chain</p>
                 <div className="panel">
                   <div className="metric">
                     <div className="metric-head">
-                      <span>ESSENCE STATE</span>
-                      <span>ACTIVE</span>
+                      <span>Pulse</span>
+                      <span>{pulse}%</span>
                     </div>
                     <div className="metric-number">{pulse}</div>
                     <div className="bar">
                       <span style={{ width: `${pulse}%` }} />
                     </div>
-                  </div>
-                  <div className="metric">
-                    <div className="metric-head">
-                      <span>PURITY / INTEGRITY</span>
-                      <span>{integrity}%</span>
-                    </div>
-                    <div className="metric-number">{integrity}</div>
-                    <div className="bar">
-                      <span style={{ width: `${integrity}%` }} />
-                    </div>
-                  </div>
-                </div>
-                <div className="grid" style={{ marginTop: 12 }}>
-                  {[
-                    ["Activity", "Real events"],
-                    ["Pulse", "Current system motion"],
-                    ["Purity", "Signal quality"],
-                    ["Growth", "Change over time"],
-                    ["State", "Current condition"],
-                    ["History", "Recorded transitions"],
-                  ].map(([title, description]) => (
-                    <div className="card" key={title}>
-                      <div className="card-title">{title}</div>
-                      <div className="description">{description}</div>
-                    </div>
-                  ))}
-                </div>
-              </Section>
-            )}
-
-            {view === "live" && (
-              <Section
-                title="2055 Live"
-                subtitle="Continuous monitoring and session path"
-              >
-                <div className="panel">
-                  <div className="metric">
-                    <div className="metric-head">
-                      <span>RUNTIME</span>
-                      <span>{running ? "RUNNING" : "PAUSED"}</span>
-                    </div>
-                    <div className="metric-number">
-                      {running ? "LIVE" : "HOLD"}
-                    </div>
                     <div className="actions">
+                      <button type="button" className="button" onClick={runPulse}>
+                        Pulse
+                      </button>
                       <button
                         type="button"
                         className="button"
@@ -751,234 +539,109 @@ export default function EssentiumDashboard() {
                       >
                         {running ? "Pause" : "Resume"}
                       </button>
+                      <button type="button" className="button" onClick={runAudit}>
+                        Audit
+                      </button>
                     </div>
                   </div>
                   <div className="metric">
                     <div className="metric-head">
-                      <span>PATH</span>
-                      <span>READY</span>
+                      <span>Silence</span>
+                      <span>{silence}%</span>
                     </div>
-                    <div className="metric-number">2055</div>
+                    <div className="metric-number">{silence}</div>
                     <div className="bar">
-                      <span style={{ width: "100%" }} />
+                      <span style={{ width: `${silence}%` }} />
                     </div>
                     <p
                       style={{
-                        marginTop: 12,
+                        marginTop: 10,
                         color: "#718096",
-                        fontSize: 12,
-                        lineHeight: 1.5,
+                        fontSize: 11,
+                        lineHeight: 1.45,
                       }}
                     >
-                      Portal → Sessions → Morning Star
+                      Root 0.7 Hz · Django Sound
                     </p>
                   </div>
                 </div>
-              </Section>
+              </section>
             )}
 
-            {view === "engines" && (
-              <Section
-                title="Engine Registry"
-                subtitle="Core, signal, and design engines"
-              >
+            {(view === "overview" || view === "modules") && (
+              <section className="section">
+                <h2>Live modules</h2>
                 <div className="grid">
-                  {filteredModules
-                    .filter((m) =>
-                      ["ENGINE", "SIGNAL", "CORE"].includes(m.category)
-                    )
-                    .map((module) => (
-                      <div className="card" key={module.name}>
-                        <div className="card-top">
-                          <div>
-                            <div className="card-title">{module.name}</div>
-                            <div className="category">{module.category}</div>
-                          </div>
-                          <StatusBadge status={module.status} />
+                  {filteredLive.map((m) => (
+                    <article key={m.name} className="card">
+                      <div className="card-top">
+                        <div>
+                          <div className="card-title">{m.name}</div>
+                          <div className="category">{m.category}</div>
                         </div>
-                        <div className="description">{module.description}</div>
-                        <div className="files">
-                          {module.files.map((file) => (
-                            <span className="file" key={file}>
-                              {file}
-                            </span>
-                          ))}
-                        </div>
+                        <StatusBadge status={m.status} />
                       </div>
-                    ))}
-                </div>
-              </Section>
-            )}
-
-            {view === "lexi" && (
-              <Section
-                title="Lexi / Vivian"
-                subtitle="Archived cognitive design layers — not live services"
-              >
-                <div className="grid">
-                  {filteredModules
-                    .filter((m) => ["Lexi", "Vivian"].includes(m.name))
-                    .map((module) => (
-                      <div className="card" key={module.name}>
-                        <div className="card-top">
-                          <div>
-                            <div className="card-title">{module.name}</div>
-                            <div className="category">{module.category}</div>
-                          </div>
-                          <StatusBadge status={module.status} />
-                        </div>
-                        <div className="description">{module.description}</div>
-                        <div className="files">
-                          {module.files.map((file) => (
-                            <span className="file" key={file}>
-                              {file}
-                            </span>
-                          ))}
-                        </div>
+                      <p className="description">{m.description}</p>
+                      <div className="files">
+                        {m.files.map((f) => (
+                          <span key={f} className="file">
+                            {f}
+                          </span>
+                        ))}
                       </div>
-                    ))}
-                </div>
-              </Section>
-            )}
-
-            {view === "music" && (
-              <Section
-                title="Django Sound"
-                subtitle="Creative production, archive, and session root"
-              >
-                <div className="grid">
-                  {filteredModules
-                    .filter((m) => m.category === "CREATIVE")
-                    .map((module) => (
-                      <div className="card" key={module.name}>
-                        <div className="card-top">
-                          <div>
-                            <div className="card-title">{module.name}</div>
-                            <div className="category">{module.category}</div>
-                          </div>
-                          <StatusBadge status={module.status} />
-                        </div>
-                        <div className="description">{module.description}</div>
-                        <div className="files">
-                          {module.files.map((file) => (
-                            <span className="file" key={file}>
-                              {file}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              </Section>
-            )}
-
-            {view === "security" && (
-              <Section
-                title="Security / Protection"
-                subtitle="Design boundaries — archived unless reactivated"
-              >
-                <div className="grid">
-                  {filteredModules
-                    .filter((m) => m.category === "SECURITY")
-                    .map((module) => (
-                      <div className="card" key={module.name}>
-                        <div className="card-top">
-                          <div>
-                            <div className="card-title">{module.name}</div>
-                            <div className="category">{module.category}</div>
-                          </div>
-                          <StatusBadge status={module.status} />
-                        </div>
-                        <div className="description">{module.description}</div>
-                        <div className="files">
-                          {module.files.map((file) => (
-                            <span className="file" key={file}>
-                              {file}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              </Section>
-            )}
-
-            {view === "protocol" && (
-              <Section
-                title="Protocol Layer"
-                subtitle="Contracts and seals — live draft vs parked"
-              >
-                <div className="contract-grid">
-                  {contracts.map((contract) => (
-                    <div className="contract" key={contract}>
-                      {contract}
-                    </div>
+                    </article>
                   ))}
                 </div>
-              </Section>
+              </section>
             )}
 
-            {view === "files" && (
-              <Section
-                title="Architecture Registry"
-                subtitle="Known components grouped by function"
-              >
-                <div className="card">
-                  <table className="file-table">
-                    <tbody>
-                      {Object.entries(filteredFiles).map(([group, files]) => (
-                        <tr key={group}>
-                          <td>{group}</td>
-                          <td>
-                            <div className="files">
-                              {files.map((file) => (
-                                <span className="file" key={file}>
-                                  {file}
-                                </span>
-                              ))}
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+            {view === "archive" && (
+              <section className="section">
+                <h2>Archive / parked</h2>
+                <p className="sub">
+                  Kept for history. Not part of the live product path.
+                </p>
+                <div className="grid">
+                  {archivedModules.map((m) => (
+                    <article key={m.name} className="card">
+                      <div className="card-top">
+                        <div>
+                          <div className="card-title">{m.name}</div>
+                          <div className="category">{m.category}</div>
+                        </div>
+                        <StatusBadge status={m.status} />
+                      </div>
+                      <p className="description">{m.description}</p>
+                    </article>
+                  ))}
                 </div>
-              </Section>
+              </section>
             )}
 
-            {view === "events" && (
-              <Section title="Telemetry" subtitle="Unified event stream">
+            {(view === "overview" || view === "telemetry") && (
+              <section className="section">
+                <h2>Events</h2>
                 <div className="events">
-                  {events.map((event, index) => (
+                  {events.map((e, i) => (
                     <div
-                      className={`event ${
-                        event.level === "WARN" ? "event-warn" : ""
+                      key={`${e.time}-${i}`}
+                      className={`event${
+                        e.level === "WARN" ? " event-warn" : ""
                       }`}
-                      key={`${event.time}-${index}`}
                     >
-                      <div className="event-time">{event.time}</div>
-                      <div className="event-source">{event.source}</div>
-                      <div className="event-message">{event.message}</div>
+                      <span className="event-time">{e.time}</span>
+                      <span className="event-source">{e.source}</span>
+                      <span className="event-message">{e.message}</span>
                     </div>
                   ))}
                 </div>
-              </Section>
+              </section>
             )}
 
             <footer className="footer">
-              <div>
-                ESSENTIUM / DSOUND
-                <br />
-                Command surface · live spine · archived design · telemetry
-              </div>
+              Live first · archive second · chain only when chosen.
               <div className="signature">
-                Yours sincerely,
-                <br />
-                Kng Drizz
-                <br />
-                Django Sound
-                <br />
-                Ibidun Olamide Theophilus Olarewaju
+                KNG DRIZZ · Django Sound · Ibidun Olamide Theophilus Olarewaju
               </div>
             </footer>
           </main>
