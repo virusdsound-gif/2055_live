@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react";
 
 /*
- * ESSENTIUM / DSOUND COMMAND DASHBOARD — optimized
- * Live-first nav. Archive in one drawer. Honest status.
+ * Essentium / Dsound command dashboard
+ * Live-first navigation. Archive in a single view. Clear status labels.
  */
 
 type Status = "ONLINE" | "ACTIVE" | "STABLE" | "ARCHIVED" | "PARKED";
@@ -26,84 +26,84 @@ const modules: Module[] = [
   {
     name: "Essentium Core",
     category: "CORE",
-    description: "Identity, state, orchestration root.",
+    description: "Identity, state, and system orchestration.",
     status: "ONLINE",
     files: ["docs/SYSTEM_STATUS.md"],
   },
   {
     name: "Django Sound",
     category: "CREATIVE",
-    description: "0.7 Hz root · KNG DRIZZ · presence.",
+    description: "Root frequency 0.7 Hz. Artist identity: KNG DRIZZ.",
     status: "ACTIVE",
     files: ["ui/morning-star.html", "music/morning-star-after-the-noise.md"],
   },
   {
     name: "2055 Live",
     category: "LIVE",
-    description: "Portal → sessions → Morning Star.",
+    description: "User path: portal, session select, Morning Star session.",
     status: "ONLINE",
     files: ["ui/portal.html", "ui/session-select.html"],
   },
   {
     name: "Music Vault",
     category: "CREATIVE",
-    description: "Lyrics and track lane.",
+    description: "Lyrics archive and production pipeline.",
     status: "ACTIVE",
     files: ["music/morning-star-after-the-noise.md"],
   },
   {
     name: "Frequency Engine",
     category: "SIGNAL",
-    description: "0.7 Hz session root.",
+    description: "Session audio rooted at 0.7 Hz.",
     status: "ACTIVE",
     files: ["ui/morning-star.html"],
   },
   {
-    name: "Transnet Door",
+    name: "Public entry",
     category: "PUBLIC",
-    description: "Public entry when you choose.",
+    description: "Shareable portal link when release is intended.",
     status: "STABLE",
     files: ["docs/GIT_SHELF_AND_PUBLIC.md", "ui/portal.html"],
   },
   {
-    name: "Git Shelf",
+    name: "Repository workflow",
     category: "OPS",
-    description: "Chat workbench · push when finished.",
+    description: "Primary work in chat; commit finished assets to GitHub.",
     status: "STABLE",
     files: ["docs/GIT_SHELF_AND_PUBLIC.md"],
   },
   {
     name: "Chain / Hardhat",
     category: "PROTOCOL",
-    description: "Parked until chosen.",
+    description: "On-chain deployment deferred until explicitly scheduled.",
     status: "PARKED",
     files: ["hardhat-project/", "MorningStar.sol"],
   },
   {
     name: "Lexi",
     category: "ARCHIVE",
-    description: "Design layer — not a live service.",
+    description: "Historical design module. Not part of runtime.",
     status: "ARCHIVED",
     files: [],
   },
   {
     name: "Vivian",
     category: "ARCHIVE",
-    description: "Design layer — not a live service.",
+    description: "Historical design module. Not part of runtime.",
     status: "ARCHIVED",
     files: [],
   },
   {
     name: "Trinity",
     category: "ARCHIVE",
-    description: "Design layer — archived.",
+    description: "Historical design module. Not part of runtime.",
     status: "ARCHIVED",
     files: [],
   },
   {
     name: "Mirror / Fortress",
     category: "ARCHIVE",
-    description: "Protection design — archived.",
+    description: "Historical design module. Not part of runtime.",
     status: "ARCHIVED",
     files: [],
   },
@@ -113,19 +113,19 @@ const initialEvents: Event[] = [
   {
     time: "SYSTEM",
     source: "BOOT",
-    message: "Optimized dashboard — live-first.",
+    message: "Dashboard loaded. Live modules only in primary views.",
     level: "INFO",
   },
   {
     time: "CORE",
-    source: "OPTIMIZE",
-    message: "Archive collapsed to one view.",
+    source: "STATUS",
+    message: "Archived modules grouped under Archive.",
     level: "SYNC",
   },
   {
     time: "LIVE",
     source: "2055",
-    message: "Portal path ONLINE.",
+    message: "Portal path available.",
     level: "INFO",
   },
 ];
@@ -191,7 +191,7 @@ export default function EssentiumDashboard() {
     setPulse(p);
     setIntegrity(i);
     setSilence(s);
-    addEvent("PULSE", `Pulse ${p}% · silence ${s}%`, "SYNC");
+    addEvent("PULSE", `Metrics updated: pulse ${p}%, silence ${s}%.`, "SYNC");
   }
 
   function toggleRuntime() {
@@ -199,7 +199,7 @@ export default function EssentiumDashboard() {
     setRunning(next);
     addEvent(
       "RUNTIME",
-      next ? "Resumed." : "Paused.",
+      next ? "Runtime resumed." : "Runtime paused.",
       next ? "INFO" : "WARN"
     );
   }
@@ -207,8 +207,17 @@ export default function EssentiumDashboard() {
   function runAudit() {
     setIntegrity(100);
     setSilence(95);
-    addEvent("AUDIT", "Spine integrity OK.", "SYNC");
+    addEvent("AUDIT", "Integrity check completed.", "SYNC");
   }
+
+  const title =
+    view === "archive"
+      ? "Archive"
+      : view === "telemetry"
+        ? "Telemetry"
+        : view === "modules"
+          ? "Modules"
+          : "Overview";
 
   return (
     <>
@@ -241,8 +250,8 @@ export default function EssentiumDashboard() {
           width: 34px; height: 34px; display: grid; place-items: center;
           border: 1px solid #56667d; border-radius: 10px; font-weight: 800;
         }
-        .brand-title { font-weight: 800; letter-spacing: 0.08em; font-size: 13px; }
-        .brand-sub { font-size: 10px; color: #7f8da1; letter-spacing: 0.1em; margin-top: 2px; }
+        .brand-title { font-weight: 800; letter-spacing: 0.06em; font-size: 13px; }
+        .brand-sub { font-size: 10px; color: #7f8da1; letter-spacing: 0.08em; margin-top: 2px; }
         .runtime {
           display: flex; align-items: center; gap: 8px;
           font-size: 11px; color: #9ba7b8;
@@ -263,7 +272,7 @@ export default function EssentiumDashboard() {
         .nav-label {
           padding: 8px 10px;
           font-size: 9px; color: #69768a;
-          letter-spacing: 0.14em; text-transform: uppercase;
+          letter-spacing: 0.12em; text-transform: uppercase;
         }
         .nav { display: grid; gap: 3px; }
         .nav button {
@@ -287,7 +296,7 @@ export default function EssentiumDashboard() {
         }
         .eyebrow {
           font-size: 10px; color: #7d8ba0;
-          letter-spacing: 0.14em; text-transform: uppercase;
+          letter-spacing: 0.12em; text-transform: uppercase;
         }
         h1 {
           margin: 4px 0;
@@ -295,7 +304,7 @@ export default function EssentiumDashboard() {
           letter-spacing: -0.03em;
         }
         .hero p {
-          margin: 0; max-width: 420px;
+          margin: 0; max-width: 440px;
           color: #8996a9; font-size: 13px; line-height: 1.5;
         }
         .search {
@@ -318,7 +327,7 @@ export default function EssentiumDashboard() {
         }
         .stat-label {
           font-size: 9px; color: #738096;
-          letter-spacing: 0.1em; text-transform: uppercase;
+          letter-spacing: 0.08em; text-transform: uppercase;
         }
         .stat-value { margin-top: 4px; font-size: 22px; font-weight: 800; }
         .section { margin-top: 22px; }
@@ -342,7 +351,7 @@ export default function EssentiumDashboard() {
         .card-title { font-weight: 700; font-size: 13px; }
         .category {
           margin-top: 2px; font-size: 9px; color: #66758a;
-          letter-spacing: 0.1em;
+          letter-spacing: 0.08em;
         }
         .description {
           margin: 10px 0; color: #8996a9;
@@ -358,7 +367,7 @@ export default function EssentiumDashboard() {
         .status {
           height: fit-content; padding: 3px 6px;
           border: 1px solid #303c4e; border-radius: 999px;
-          font-size: 8px; font-weight: 800; letter-spacing: 0.06em;
+          font-size: 8px; font-weight: 800; letter-spacing: 0.05em;
         }
         .status-online, .status-active, .status-stable { color: #b8c9df; }
         .status-archived, .status-parked { color: #66758a; }
@@ -442,18 +451,18 @@ export default function EssentiumDashboard() {
             <div className="brand-mark">E</div>
             <div>
               <div className="brand-title">ESSENTIUM</div>
-              <div className="brand-sub">LIVE SPINE · DSOUND</div>
+              <div className="brand-sub">COMMAND DASHBOARD</div>
             </div>
           </div>
           <div className="runtime">
             <span className="dot" />
-            {running ? "LIVE" : "PAUSED"}
+            {running ? "Running" : "Paused"}
           </div>
         </header>
 
         <div className="shell">
           <aside className="sidebar">
-            <div className="nav-label">Command</div>
+            <div className="nav-label">Navigation</div>
             <nav className="nav">
               {(
                 [
@@ -478,30 +487,32 @@ export default function EssentiumDashboard() {
           <main className="main">
             <div className="hero">
               <div>
-                <div className="eyebrow">Optimized command surface</div>
-                <h1>{view === "archive" ? "ARCHIVE" : "LIVE SPINE"}</h1>
+                <div className="eyebrow">System control</div>
+                <h1>{title}</h1>
                 <p>
-                  Portal, sessions, Morning Star, music. Archive stays one
-                  click away — not in the main path.
+                  {view === "archive"
+                    ? "Historical and deferred components. Excluded from the primary product path."
+                    : "Active product path: portal, sessions, Morning Star, and music assets."}
                 </p>
               </div>
               {view !== "archive" && (
                 <input
                   className="search"
-                  placeholder="Search live modules…"
+                  placeholder="Search modules"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
+                  aria-label="Search modules"
                 />
               )}
             </div>
 
             <div className="stats">
               <div className="stat">
-                <div className="stat-label">Live</div>
+                <div className="stat-label">Active</div>
                 <div className="stat-value">{liveModules.length}</div>
               </div>
               <div className="stat">
-                <div className="stat-label">Archive</div>
+                <div className="stat-label">Archived</div>
                 <div className="stat-value">{archivedModules.length}</div>
               </div>
               <div className="stat">
@@ -517,7 +528,9 @@ export default function EssentiumDashboard() {
             {(view === "overview" || view === "telemetry") && (
               <section className="section">
                 <h2>Telemetry</h2>
-                <p className="sub">Local metrics — not on-chain</p>
+                <p className="sub">
+                  Local indicators for dashboard use. Not blockchain state.
+                </p>
                 <div className="panel">
                   <div className="metric">
                     <div className="metric-head">
@@ -530,7 +543,7 @@ export default function EssentiumDashboard() {
                     </div>
                     <div className="actions">
                       <button type="button" className="button" onClick={runPulse}>
-                        Pulse
+                        Update metrics
                       </button>
                       <button
                         type="button"
@@ -540,13 +553,13 @@ export default function EssentiumDashboard() {
                         {running ? "Pause" : "Resume"}
                       </button>
                       <button type="button" className="button" onClick={runAudit}>
-                        Audit
+                        Run check
                       </button>
                     </div>
                   </div>
                   <div className="metric">
                     <div className="metric-head">
-                      <span>Silence</span>
+                      <span>Silence index</span>
                       <span>{silence}%</span>
                     </div>
                     <div className="metric-number">{silence}</div>
@@ -561,7 +574,7 @@ export default function EssentiumDashboard() {
                         lineHeight: 1.45,
                       }}
                     >
-                      Root 0.7 Hz · Django Sound
+                      Reference frequency: 0.7 Hz (Django Sound)
                     </p>
                   </div>
                 </div>
@@ -570,7 +583,7 @@ export default function EssentiumDashboard() {
 
             {(view === "overview" || view === "modules") && (
               <section className="section">
-                <h2>Live modules</h2>
+                <h2>Active modules</h2>
                 <div className="grid">
                   {filteredLive.map((m) => (
                     <article key={m.name} className="card">
@@ -597,9 +610,9 @@ export default function EssentiumDashboard() {
 
             {view === "archive" && (
               <section className="section">
-                <h2>Archive / parked</h2>
+                <h2>Archived and deferred</h2>
                 <p className="sub">
-                  Kept for history. Not part of the live product path.
+                  Retained for reference. Not included in the active product path.
                 </p>
                 <div className="grid">
                   {archivedModules.map((m) => (
@@ -620,7 +633,7 @@ export default function EssentiumDashboard() {
 
             {(view === "overview" || view === "telemetry") && (
               <section className="section">
-                <h2>Events</h2>
+                <h2>Event log</h2>
                 <div className="events">
                   {events.map((e, i) => (
                     <div
@@ -639,9 +652,11 @@ export default function EssentiumDashboard() {
             )}
 
             <footer className="footer">
-              Live first · archive second · chain only when chosen.
+              Active path first. Archive second. On-chain work only when scheduled.
               <div className="signature">
-                KNG DRIZZ · Django Sound · Ibidun Olamide Theophilus Olarewaju
+                KNG DRIZZ · Django Sound
+                <br />
+                Ibidun Olamide Theophilus Olarewaju
               </div>
             </footer>
           </main>
