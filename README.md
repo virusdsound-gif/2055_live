@@ -2,7 +2,7 @@
 
 **KNG DRIZZ · Django Sound · 0.7 Hz root**
 
-Sovereign frequency architecture for intentional listening.
+A room for intentional listening.
 Public platforms remain discovery. This repo is the shelf. The room is the door.
 
 ---
@@ -13,7 +13,7 @@ Public platforms remain discovery. This repo is the shelf. The room is the door.
 |-------|------|--------|
 | Listening room (source) | `web/` | Live |
 | First listen | Morning Star · 90 s | Live |
-| Full flagship | Morning Star · 15 min | Live |
+| Morning Star | 15 min cut | Live |
 | Session catalog | `docs/SESSIONS.md` | Defined |
 | Grid stamp | `docs/GRID.md` | Live / Deferred / Archive |
 | Track lyrics | `music/morning-star-after-the-noise.md` | Written, off the public surface |

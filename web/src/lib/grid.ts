@@ -42,7 +42,7 @@ export const LIVE_SLICE: GridNode = {
           id: "morning-star",
           label: "Morning Star",
           plane: "live",
-          note: "Flagship. 15 minutes.",
+          note: "Flagship. The cut. 15 minutes, or first listen 90 seconds.",
         },
         {
           id: "root-room",

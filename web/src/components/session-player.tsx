@@ -59,7 +59,11 @@ export function SessionPlayer({
         return;
       }
       const p = phaseAt(session, next);
-      audioRef.current?.setLevel(p.volume, p.harmonicMix ?? 0);
+      audioRef.current?.setLevel(p.volume, {
+        harmonic: p.harmonicMix ?? 0,
+        noise: p.noiseMix ?? 0,
+        pad: p.padMix ?? 0,
+      });
       if (session.id === "ghost") {
         audioRef.current?.driftCarrier(170 + Math.sin(next / 11) * 28);
       }
@@ -80,7 +84,11 @@ export function SessionPlayer({
     await engine.start(session);
     engine.setUserGain(level);
     const p = phaseAt(session, 0);
-    engine.setLevel(p.volume, p.harmonicMix ?? 0);
+    engine.setLevel(p.volume, {
+      harmonic: p.harmonicMix ?? 0,
+      noise: p.noiseMix ?? 0,
+      pad: p.padMix ?? 0,
+    });
     startRef.current = performance.now();
     lastUiRef.current = 0;
     setElapsed(0);
@@ -114,7 +122,7 @@ export function SessionPlayer({
           ? "The star remains."
           : status === "idle"
             ? form === "short"
-              ? "Ninety seconds through the same five phases."
+              ? "Ninety seconds through the cut."
               : session.feeling
             : phase.copy}
       </p>
@@ -209,7 +217,9 @@ export function SessionPlayer({
 
       <p className="mt-8 flex items-center justify-center gap-2 text-xs text-subtle">
         <Headphones className="size-3.5" />
-        Headphones recommended. 0.7 Hz root throughout.
+        {session.binaural
+          ? "Headphones. 0.7 Hz between the ears."
+          : "Headphones recommended. 0.7 Hz root throughout."}
       </p>
 
       <Link

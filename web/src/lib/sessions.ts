@@ -7,6 +7,8 @@ export type Phase = {
   copy: string;
   volume: number;
   harmonicMix?: number;
+  noiseMix?: number;
+  padMix?: number;
 };
 
 export type SessionDef = {
@@ -21,6 +23,7 @@ export type SessionDef = {
   harmonicHz: number | null;
   lfoHz: number;
   lfoDepth: number;
+  binaural?: boolean;
   phases: Phase[];
 };
 
@@ -31,50 +34,77 @@ export const SESSIONS: SessionDef[] = [
     id: "morning-star",
     title: "Morning Star",
     duration: 15 * 60,
-    feeling: "Emergence after darkness",
+    feeling: "After the noise",
     bestFor: "Flagship",
     durationLabel: "15 min",
     flagship: true,
     carrierHz: 180,
     harmonicHz: 270,
     lfoHz: 0.7,
-    lfoDepth: 0.32,
+    lfoDepth: 0.22,
+    binaural: true,
     phases: [
       {
-        name: "Threshold",
+        name: "After the noise",
         start: 0,
-        end: 120,
-        copy: "Arrive. Let the pulse find you.",
-        volume: 0.16,
+        end: 90,
+        copy: "I built rooms in the dark.",
+        volume: 0.12,
+        noiseMix: 0.16,
       },
       {
-        name: "First Light",
-        start: 120,
-        end: 330,
-        copy: "A thin harmonic rises. The root stays.",
-        volume: 0.2,
-        harmonicMix: 0.1,
+        name: "Verse I",
+        start: 90,
+        end: 240,
+        copy: "Every delay looked like a message.",
+        volume: 0.18,
+        padMix: 0.14,
+        noiseMix: 0.1,
       },
       {
-        name: "Presence",
-        start: 330,
-        end: 660,
-        copy: "Stay with the field. Nothing is asked of you.",
-        volume: 0.26,
+        name: "Hook",
+        start: 240,
+        end: 360,
+        copy: "I don't chase the morning. I become the light that stays.",
+        volume: 0.24,
         harmonicMix: 0.22,
+        padMix: 0.1,
+        noiseMix: 0.04,
       },
       {
-        name: "Return",
+        name: "Verse II",
+        start: 360,
+        end: 540,
+        copy: "Presence don't need a ticker.",
+        volume: 0.2,
+        harmonicMix: 0.08,
+        padMix: 0.14,
+        noiseMix: 0.08,
+      },
+      {
+        name: "Bridge",
+        start: 540,
+        end: 660,
+        copy: "The real session starts when the room goes dark.",
+        volume: 0.1,
+        padMix: 0.06,
+        noiseMix: 0.12,
+      },
+      {
+        name: "Clear lane",
         start: 660,
-        end: 870,
-        copy: "Upper layers recede. Only the root remains.",
-        volume: 0.14,
+        end: 810,
+        copy: "0.7 under everything. Slow heart, clear lane.",
+        volume: 0.26,
+        harmonicMix: 0.28,
+        padMix: 0.12,
+        noiseMix: 0.02,
       },
       {
         name: "Silence",
-        start: 870,
+        start: 810,
         end: 900,
-        copy: "The star remains.",
+        copy: "What remains when it's quiet.",
         volume: 0,
       },
     ],
@@ -125,6 +155,7 @@ export const SESSIONS: SessionDef[] = [
     harmonicHz: null,
     lfoHz: 0.7,
     lfoDepth: 0.2,
+    binaural: true,
     phases: [
       {
         name: "Threshold",
@@ -159,7 +190,8 @@ export const SESSIONS: SessionDef[] = [
     carrierHz: 196,
     harmonicHz: 247,
     lfoHz: 0.7,
-    lfoDepth: 0.28,
+    lfoDepth: 0.22,
+    binaural: true,
     phases: [
       {
         name: "Drift",
