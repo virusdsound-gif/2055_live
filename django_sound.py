@@ -1,6 +1,7 @@
 # django_sound.py
 # Ghost Frequency Program :: Django Sound
 
+import sys
 import time
 import random
 
@@ -22,7 +23,7 @@ class DjangoSound:
         print(f"Root Hz  : {self.frequency}")
         print("==============================\n")
 
-    def pulse(self):
+    def pulse(self, once=False):
         messages = [
             "Silence loading...",
             "Ghost frequency active...",
@@ -32,6 +33,10 @@ class DjangoSound:
             "Shadow mode stable...",
             "Heartbeat hidden beneath silence..."
         ]
+
+        if once:
+            print(f"[once] {random.choice(messages)}")
+            return
 
         while True:
             print(f"[{random.randint(1000,9999)}] {random.choice(messages)}")
@@ -49,4 +54,4 @@ if __name__ == "__main__":
     system = DjangoSound()
     system.boot()
     system.prophecy()
-    system.pulse()
+    system.pulse(once="--once" in sys.argv)

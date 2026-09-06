@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 from datetime import datetime
 
 DATABASE = "timeline_memory.json"
@@ -266,54 +267,83 @@ def view_logs():
     else:
         print("\nNo logs found.")
 
-# MAIN LOOP
-while True:
-
-    print("\n=== 2055 EVENT ENGINE ===")
-    print("1. Scan Timeline")
-    print("2. Stabilize Node")
-    print("3. Corrupt Node")
-    print("4. Create Node")
-    print("5. View Event Logs")
-    print("6. Equation Analyzer")
-    print("7. Recovery Protocol")
-    print("8. Containment Protocol")
-    print("9. Exit")
-
-    choice = input("\nSelect: ")
-
-    if choice == "1":
+# MAIN
+def run_argv(argv):
+    cmd = argv[0] if argv else "scan"
+    if cmd in ("1", "scan"):
         scan()
-
-    elif choice == "2":
-
-        name = input("Node name: ")
-        stabilize(name)
-
-    elif choice == "3":
-
-        name = input("Node name: ")
-        corrupt(name)
-
-    elif choice == "4":
-        create_node()
-
-    elif choice == "5":
+    elif cmd in ("2", "stabilize") and len(argv) > 1:
+        stabilize(argv[1])
+    elif cmd in ("3", "corrupt") and len(argv) > 1:
+        corrupt(argv[1])
+    elif cmd in ("4", "create") and len(argv) > 2:
+        # create_node() is interactive; skip in argv unless names passed
+        print("create: interactive only")
+    elif cmd in ("5", "logs"):
         view_logs()
-
-    elif choice == "6":
+    elif cmd in ("6", "equation"):
         equation_solver()
-
-    elif choice == "7":
+    elif cmd in ("7", "recovery"):
         recovery_protocol()
-
-    elif choice == "8":
+    elif cmd in ("8", "containment"):
         containment_protocol()
-
-    elif choice == "9":
-
+    elif cmd in ("9", "exit", "quit"):
         print("\n2055 Event Engine Closed.")
-        break
-
     else:
-        print("\nInvalid command.")
+        print("usage: 2055_events.py scan | logs | equation | recovery | containment")
+
+if __name__ == "__main__":
+    argv = sys.argv[1:]
+    if argv or not sys.stdin.isatty():
+        run_argv(argv or ["scan"])
+    else:
+        while True:
+
+            print("\n=== 2055 EVENT ENGINE ===")
+            print("1. Scan Timeline")
+            print("2. Stabilize Node")
+            print("3. Corrupt Node")
+            print("4. Create Node")
+            print("5. View Event Logs")
+            print("6. Equation Analyzer")
+            print("7. Recovery Protocol")
+            print("8. Containment Protocol")
+            print("9. Exit")
+
+            choice = input("\nSelect: ")
+
+            if choice == "1":
+                scan()
+
+            elif choice == "2":
+
+                name = input("Node name: ")
+                stabilize(name)
+
+            elif choice == "3":
+
+                name = input("Node name: ")
+                corrupt(name)
+
+            elif choice == "4":
+                create_node()
+
+            elif choice == "5":
+                view_logs()
+
+            elif choice == "6":
+                equation_solver()
+
+            elif choice == "7":
+                recovery_protocol()
+
+            elif choice == "8":
+                containment_protocol()
+
+            elif choice == "9":
+
+                print("\n2055 Event Engine Closed.")
+                break
+
+            else:
+                print("\nInvalid command.")

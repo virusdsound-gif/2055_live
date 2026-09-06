@@ -1,5 +1,7 @@
 # 2055 CORE ENGINE
 
+import sys
+
 class Node:
     def __init__(self, name, state):
         self.name = name
@@ -64,30 +66,46 @@ connect("Dablixx", "Olarewaju", "child")
 connect("Yetunde", "Iremide", "corrupted_branch")
 connect("Olarewaju", "Wale", "corrupted_branch")
 
-# TERMINAL LOOP
-while True:
-    print("\n=== 2055 COMMAND ENGINE ===")
-    print("1. Scan Timeline")
-    print("2. Stabilize Node")
-    print("3. Corrupt Node")
-    print("4. Exit")
-
-    choice = input("\nSelect: ")
-
-    if choice == "1":
+def run_argv(argv):
+    cmd = argv[0] if argv else "scan"
+    if cmd in ("1", "scan"):
         scan()
-
-    elif choice == "2":
-        name = input("Node name: ")
-        stabilize(name)
-
-    elif choice == "3":
-        name = input("Node name: ")
-        corrupt(name)
-
-    elif choice == "4":
+    elif cmd in ("2", "stabilize") and len(argv) > 1:
+        stabilize(argv[1])
+    elif cmd in ("3", "corrupt") and len(argv) > 1:
+        corrupt(argv[1])
+    elif cmd in ("4", "exit", "quit"):
         print("\n2055 Engine Closed.")
-        break
-
     else:
-        print("\nInvalid command.")
+        print("usage: 2055_core.py scan | stabilize <name> | corrupt <name>")
+
+def interactive():
+    while True:
+        print("\n=== 2055 COMMAND ENGINE ===")
+        print("1. Scan Timeline")
+        print("2. Stabilize Node")
+        print("3. Corrupt Node")
+        print("4. Exit")
+
+        choice = input("\nSelect: ")
+
+        if choice == "1":
+            scan()
+        elif choice == "2":
+            name = input("Node name: ")
+            stabilize(name)
+        elif choice == "3":
+            name = input("Node name: ")
+            corrupt(name)
+        elif choice == "4":
+            print("\n2055 Engine Closed.")
+            break
+        else:
+            print("\nInvalid command.")
+
+if __name__ == "__main__":
+    argv = sys.argv[1:]
+    if argv or not sys.stdin.isatty():
+        run_argv(argv or ["scan"])
+    else:
+        interactive()
