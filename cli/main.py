@@ -38,10 +38,13 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if cmd == "status":
         print("2055_live")
+        print("Artist   : KNG DRIZZ")
+        print("Label    : Django Sound")
+        print("Grid     : Essentium")
         print("Root     : 0.7 Hz")
-        print("Identity : Django Sound")
-        print("Door     : web/  (not this CLI)")
+        print("Door     : the listening room (not this CLI)")
         print("Chain    : deferred")
+        print("Voice    : sketch 01 — not X")
         return 0
     if cmd in ("grid", "emit", "sync", "sync:push", "event:emit"):
         return run_py("essentium_grid.py")

@@ -1,6 +1,8 @@
 {
-  "timestamp": "2026-05-11T15:17:52.977016",
-  "psi_e": 546.43,
-  "dominant_layer": "0.7 Hz Django Sound",
-  "morning_star_active": true
+  "plane": "archive",
+  "note": "Termux dashboard theatre. psi_e is not a status. Morning Star is the sitting in the room, not this flag.",
+  "dominant_layer": "0.7 Hz",
+  "artist": "KNG DRIZZ",
+  "label": "Django Sound",
+  "morning_star_active": false
 }

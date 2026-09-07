@@ -1,21 +1,19 @@
 {
-  "name": "The Morning Star 🌟 — Django Sound Root",
-  "description": "First light after the long night. 0.7 Hz Royal Silence Anchor.",
-  "image": "ipfs://Qm.../morning-star-django.jpg",
+  "name": "Morning Star",
+  "description": "Deferred. URI waits on X (master of the cut + hash). No stake. No APY. No emoji.",
+  "artist": "KNG DRIZZ",
+  "label": "Django Sound",
   "frequency": "0.7 Hz",
-  "layer": "Root Anchor",
+  "status": "deferred",
+  "image": "",
   "attributes": [
     {
-      "trait_type": "Root Strength",
-      "value": "Maximum"
+      "trait_type": "Root",
+      "value": "0.7 Hz"
     },
     {
-      "trait_type": "Staking Multiplier",
-      "value": "+40%"
-    },
-    {
-      "trait_type": "Patience Yield",
-      "value": "Legendary"
+      "trait_type": "Yield",
+      "value": "none"
     }
   ]
 }

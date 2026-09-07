@@ -1,7 +1,9 @@
 {
-  "timestamp": "2026-05-11T15:34:19.986736",
-  "active_timelines": 4,
-  "dominant_root": "0.7 Hz Django Sound",
-  "morning_star_active": true,
-  "psi_e": 582.4
+  "plane": "archive",
+  "note": "Termux unified state. Not a runtime. Root is 0.7 Hz in the listening room.",
+  "artist": "KNG DRIZZ",
+  "label": "Django Sound",
+  "grid": "Essentium",
+  "dominant_root": "0.7 Hz",
+  "morning_star_active": false
 }

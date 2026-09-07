@@ -1,16 +1,12 @@
 {
+  "plane": "archive",
+  "note": "Termux live-ticket simulation. Not a stream. Not a wallet. Not ESS.",
   "live": {
-    "active": true,
-    "host": "kng_drizz",
-    "ticket": 0.5,
-    "started": 1778883503200,
-    "viewers": [
-      "kng_drizz"
-    ],
-    "burned": 0.5
+    "active": false,
+    "host": null,
+    "ticket": 0,
+    "viewers": [],
+    "burned": 0
   },
-  "wallets": {
-    "kng_drizz": 7.5,
-    "django": 2
-  }
+  "wallets": {}
 }

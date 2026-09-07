@@ -4,10 +4,10 @@ The grid is the map. The live slice is the road.
 
 ## Live — in the room
 
-- Identity: Django Sound (KNG DRIZZ and Essentium are registers, not subsystems)
+- Identity: **KNG DRIZZ** (artist). Django Sound is the label/genre. Essentium is the grid name.
 - Frequency: 0.7 Hz root
 - Music: Morning Star, 0.7 Hz, Silent, Ghost
-- Surface: portal, sessions, player, system overview
+- Surface: portal, sessions, player, system overview, local vault, After the noise, catalog list
 - Telemetry: completions and last room on this device
 
 ## Deferred — scheduled later
@@ -15,8 +15,9 @@ The grid is the map. The live slice is the road.
 - Protocol / chain (Solidity, ledger, validation)
 - Security (Mirror, Fortress, Shield)
 - Recovery
-- Music vault on this surface
+- Chain vault / STAR mint (URI waits on X)
 - Remote logs
+- Public door
 
 ## Archive — recorded, not in the way
 

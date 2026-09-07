@@ -1,9 +1,8 @@
 # 2055_live — Essentium Grid
 
-**KNG DRIZZ · Django Sound · 0.7 Hz root**
+**KNG DRIZZ** (artist) · **Django Sound** (label / genre) · **0.7 Hz** · Essentium (grid)
 
-A room for intentional listening.
-Public platforms remain discovery. This repo is the shelf. The room is the door.
+A room for intentional listening. This repo is the shelf.
 
 ---
 
@@ -11,15 +10,14 @@ Public platforms remain discovery. This repo is the shelf. The room is the door.
 
 | Layer | Path | Status |
 |-------|------|--------|
-| Listening room (source) | `web/` | Live |
-| First listen | Morning Star · 90 s | Live |
-| Morning Star | 15 min cut | Live |
-| Session catalog | `docs/SESSIONS.md` | Defined |
+| Listening room | portal → sessions → Morning Star | Live (this house) |
+| After the noise | words + voice sketch 01 | Live as a page; sketch is not X |
+| Catalog | `music/catalog/` | Shelf — KNG DRIZZ records |
+| Local vault | receipts on device | Live — no chain |
 | Grid stamp | `docs/GRID.md` | Live / Deferred / Archive |
-| Track lyrics | `music/morning-star-after-the-noise.md` | Written, off the public surface |
-| Static first door | `ui/*.html` | Archive |
-| MorningStar contract | `hardhat-project/contracts/MorningStar.sol` | Deferred |
-| CLI / Termux as door | `cli/`, `bin/` | Archive as the door |
+| Termux / CLI | `cli/`, `bin/` | Archive as a door. Honest status only. See `docs/TERMUX_CORRECTIONS.md` |
+| MorningStar contract | `hardhat-project/contracts/` | Deferred |
+| STAR metadata | `nft/` | Deferred. No yield. |
 
 ---
 
@@ -27,31 +25,15 @@ Public platforms remain discovery. This repo is the shelf. The room is the door.
 
 | Hz | Role |
 |----|------|
-| **0.7** | Django Sound — root. Live throughout the rooms. |
+| **0.7** | Root in the rooms. Django Sound is the field, not a second artist. |
 
-Other layers stay in the map. They do not replace the root.
-
-Patience compounds. Silence stabilizes.
-
----
-
-## Paths
-
-```
-Web2 discovery  →  portal  →  sessions  →  Morning Star
-```
-
-- **Live:** `web/` — portal, four rooms, player, local system
-- **Deferred:** chain, vault, fortress
-- **Archive:** first HTML door in `ui/`, CLI as product, operator cockpit theatre
-
-Blockchain supports access and proof later.
-It does not replace the listening experience.
+Other Hz files under `timelines/` are **archive labels**, not a runtime.
 
 ---
 
 ## Identity
 
-**Ibidun Olamide Theophilus Olarewaju**
-KNG DRIZZ · Django Sound
-Essentium Grid · 2055_live
+**Ibidun Olamide Theophilus Olarewaju**  
+Artist: KNG DRIZZ  
+Label / genre: Django Sound  
+Grid: Essentium · 2055_live

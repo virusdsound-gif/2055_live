@@ -114,6 +114,7 @@ Termux scaffolding  →  GitHub source of truth  →  Session + music craft
 
 ## 4. One-line status
 
-**Built on Termux. Held on GitHub. Raised through sessions and sound.**
+## 5. Corrections
 
-I dey wit you 100.
+Termux printed LIVE on empty boxes. That list and the file fixes: `docs/TERMUX_CORRECTIONS.md`.
+
