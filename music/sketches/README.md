@@ -1,11 +1,11 @@
 # Sketches
 
-Working voice. Not X. Not the player body.
+Field form. Not X. Not the player body. Not the street catalog.
 
-KNG DRIZZ is the artist. Django Sound is the label/genre, not a second person.
+KNG DRIZZ is the artist. Django Sound is the label. `TALB` = Morning Star. `TXXX:FORM` = field.
 
-The voice on `after-the-noise-voice-01.mp3` is KNG DRIZZ, same as the catalog (`music/catalog/`): Tuff N Black, Keep My Head Up, Die a Legend. Catalog = the artist on a beat. Sketch = the artist, dry, on After the noise.
+The voice on `after-the-noise-voice-01.mp3` is KNG DRIZZ, same as the catalog, different form (dry lyric, no beat).
 
 | File | What |
 | --- | --- |
-| `after-the-noise-voice-01.mp3` | First dry read (~3:05). Grain kept. Names slipped. |
+| `after-the-noise-voice-01.mp3` | First dry read (~3:05). Grain kept. Names slipped. Not X. |
