@@ -13,7 +13,7 @@
 | Form | What | Album tag |
 | --- | --- | --- |
 | Street | Catalog: Tuff N Black, Keep My Head Up, Die a Legend | `Catalog` |
-| Field | Morning Star / After the noise (sketch 01 is not X) | `Morning Star` |
+| Field | Morning Star / After the noise — waiting on a take | `Morning Star` |
 
 ID3 on the masters: `TPE1` = KNG DRIZZ, `TPUB` = Django Sound, `TXXX:FORM` = street | field.
 

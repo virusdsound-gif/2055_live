@@ -44,7 +44,7 @@ def main(argv: list[str] | None = None) -> int:
         print("Root     : 0.7 Hz")
         print("Door     : the listening room (not this CLI)")
         print("Chain    : deferred")
-        print("Voice    : sketch 01 — not X")
+        print("Voice    : waiting on a take")
         return 0
     if cmd in ("grid", "emit", "sync", "sync:push", "event:emit"):
         return run_py("essentium_grid.py")
