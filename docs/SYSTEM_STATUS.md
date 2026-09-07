@@ -9,7 +9,7 @@
 | Label | Django Sound | Genre / field |
 | Grid | Essentium | Map name |
 | Portal → Morning Star | Live | Primary path |
-| Voice sketch 01 | Shelf | Not X |
+| Voice | Waiting | Take 1 pulled. Do not use. |
 | Local vault | Live | This device. No yield |
 | Command dashboard / PaC / APY | Archive | Termux theatre |
 | CLI `dsound` | Archive | `status` tells the truth. mint/wallet deferred |

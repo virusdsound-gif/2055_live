@@ -11,7 +11,7 @@ A room for intentional listening. This repo is the shelf.
 | Layer | Path | Status |
 |-------|------|--------|
 | Listening room | portal → sessions → Morning Star | Live (this house) |
-| After the noise | words + voice sketch 01 | Live as a page; sketch is not X |
+| After the noise | words page | Live. Take not in. |
 | Catalog | `music/catalog/` | Shelf — KNG DRIZZ records |
 | Local vault | receipts on device | Live — no chain |
 | Grid stamp | `docs/GRID.md` | Live / Deferred / Archive |
